@@ -14,12 +14,13 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0b1321;
+    background-color: #d400ff;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 120vh;
+
 }
 
 .headNavs {
@@ -33,12 +34,14 @@ body {
 /*leftnav*/
 
 .headNavs .leftNav {
-    position: relative;
+    position: fixed;
     box-shadow: 5px 0px 2px #11369b;
     color: #fff;
     width: 15%;
     height: 90%;
     background-color: red;
+
+
 }
 
 .muzzylogo {
@@ -93,12 +96,60 @@ body {
 /*leftnav*/
 /*songpage*/
 .headNavs .songPage {
-    position: relative;
+
     color: #fff;
     width: 85%;
     height: 90%;
     background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 15%;
+    margin-top: 20px;
 }
+
+.songPage .todaysHits .moreContainer {
+    margin-bottom: 20px;
+    background-color: #95a3ca;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.songPage .todaysHits .moreContainer a {
+    text-decoration: none;
+    color: white;
+}
+
+.songPage .todaysHits {
+    width: 90%;
+    background-color: #11369b;
+}
+
+.songPage .todaysHits .showContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+
+}
+
+.todaysHits .showContainer .elementContainer {
+    width: 15%;
+    background-color: #00ff73;
+
+
+}
+
+.todaysHits .showContainer .elementContainer img {
+    width: 100%;
+
+}
+
+
+
 
 /*songpage*/
 
@@ -111,6 +162,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0px 40px;
+    position: fixed;
+    bottom: 0;
 }
 
 .playerNav img {
@@ -144,9 +197,6 @@ body {
     border-radius: 30px;
     padding: 10px;
 }
-
-
-
 
 .playerNav .container-audio {
     width: 50%;
