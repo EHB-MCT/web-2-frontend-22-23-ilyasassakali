@@ -222,31 +222,32 @@ body {
     width: 50%;
     border-radius: 15px;
     margin-top: 10px;
+
+
 }
 
 .playerNav audio {
     width: 100%;
     height: 40px;
-}
+    padding: 5px;
 
-audio::-webkit-media-controls-panel {
-
-    background-image: white;
-    ;
 
 }
 
-audio::-webkit-media-controls {
-    
-    background: #181e28;
-}
 
 audio::-webkit-media-controls-enclosure {
-    
-    background:  #181e28;
-    
+    background-color: #3b3f47;
 }
 
+
+audio::-webkit-media-controls-current-time-display {
+    text-shadow: none;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+
+    text-shadow: none;
+}
 
 /*playernav*/
 
