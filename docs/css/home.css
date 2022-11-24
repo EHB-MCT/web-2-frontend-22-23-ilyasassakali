@@ -237,3 +237,12 @@ audio::-webkit-media-controls-panel {
 }
 
 /*playernav*/
+
+@media(min-width: 1500px) {
+    body {
+
+       
+        height: 250vh;
+
+    }
+}
