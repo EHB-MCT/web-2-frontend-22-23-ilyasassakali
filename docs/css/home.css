@@ -236,12 +236,37 @@ audio::-webkit-media-controls-panel {
 
 }
 
+audio::-webkit-media-controls {
+    
+    background: #181e28;
+}
+
+audio::-webkit-media-controls-enclosure {
+    
+    background:  #181e28;
+    
+}
+
+
 /*playernav*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media(min-width: 1500px) {
     body {
 
-       
+
         height: 250vh;
 
     }
