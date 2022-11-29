@@ -5,14 +5,13 @@ window.onload = function () {
 
     function searchOnName() {
         let searched = document.getElementById('searchbar');
-        searched.addEventListener("keypress", function (event) {
+        searched.addEventListener("keyup", function (event) {
+            let searchword = searched.value.toLowerCase()
             if (event.key === "Enter") {
                 event.preventDefault();
             }
-            let searchword = searched.value.toLowerCase()
-
-
             if (document.getElementById('tra').checked) {
+                console.log("je cherche:", searchword);
                 //search track
                 console.log("le premier");
                 DZ.api(`/search/track?q=${searchword}`, function (response) {
@@ -41,7 +40,7 @@ window.onload = function () {
                 console.log("le deuxieme");
                 //search album
                 DZ.api(`/search/album?q=${searchword}`, function (response) {
-                    console.log("search on: ", searchword);
+
                     console.log("fetch:", response.data);
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
@@ -64,7 +63,7 @@ window.onload = function () {
                 console.log("troisieme");
                 //search artist
                 DZ.api(`/search/artist?q=${searchword}`, function (response) {
-                    console.log("search on: ", searchword);
+
                     console.log("fetch:", response.data);
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {

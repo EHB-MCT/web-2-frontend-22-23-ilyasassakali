@@ -285,21 +285,14 @@ label {
     cursor: pointer;
     font-weight: bold;
     padding: 5px 20px;
-
-
 }
 
 input[type=radio]:checked+label {
-
     color: #ff69fa;
-
-
 }
 
 label+input[type=radio]+label {
-
     border-left: 1px solid #ff69fa;
-
 }
 
 .radio-group {
