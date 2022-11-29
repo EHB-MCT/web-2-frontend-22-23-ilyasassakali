@@ -254,7 +254,8 @@ audio::-webkit-media-controls-time-remaining-display {
 .searchbarsection {
     width: 90%;
     margin-top: 20px;
-
+    display: flex;
+    align-items: center;
 }
 
 .searchbar {
@@ -270,13 +271,43 @@ audio::-webkit-media-controls-time-remaining-display {
     margin-right: 100px;
 }
 
+/*radiobuttons*/
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+  
+  label {
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+  }
+  
+  input[type=radio]:checked + label{
+    color: green;
+    background: yellow;
+  }
+  
+  label + input[type=radio] + label {
+    border-left: 2px solid white;
+  }
+  .radio-group {
+    border: 2px solid white;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 
-.radiobtn {
-    margin-left: 100px;
-    
-}
 
-.lbl {}
+
+
+
+
+
 
 
 @media(min-width: 1500px) {

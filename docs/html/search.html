@@ -46,10 +46,12 @@
 
                 <input class="searchbar" type="text" placeholder="Search on tracks,albums and artists" id="searchbar">
 
-                <input class="radiobtn" type="radio" name="programType" id="basicProgram" value="Basic" checked />
-                <label class="lbl" for="basicProgram">Tracks</label>
-                <input class="radiobtn" type="radio" name="programType" id="proProgram" value="Pro" />
-                <label class="lbl" for="proProgram">Albums</label>
+
+                <div class="radio-group">
+                    <input type="radio" id="tra" name="selector" checked><label for="tra">Tracks</label><input
+                        type="radio" id="alb" name="selector"><label for="alb">Albums</label><input type="radio"
+                        id="art" name="selector"><label for="art">Artists</label>
+                </div>
 
             </div>
 

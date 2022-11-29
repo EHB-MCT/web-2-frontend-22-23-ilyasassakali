@@ -12,8 +12,8 @@ window.onload = function () {
             let searchword = searched.value.toLowerCase()
 
 
-            if (document.getElementById('basicProgram').checked) {
-                // Basic package is checked
+            if (document.getElementById('tra').checked) {
+                //search track
                 console.log("le premier");
                 DZ.api(`/search/track?q=${searchword}`, function (response) {
                     //console.log("search on: ", searchword);
@@ -28,7 +28,7 @@ window.onload = function () {
                         htmlString += ` <div class="elementContainer">
                             <a href=""> <img src="${coverImage}" alt=""></a>
                             <p>${title}</p>
-                            <p class="secondp">${artist}</p>
+                            <p class="secondp" style="font-size:12px">${artist}</p>
                         </div>`
 
                         document.getElementById("showContainer").innerHTML = htmlString;
@@ -36,8 +36,8 @@ window.onload = function () {
                     });
                 })
 
-            } else if (document.getElementById('proProgram').checked) {
-                // Pro package is checked
+            } else if (document.getElementById('alb').checked) {
+
                 console.log("le deuxieme");
                 //search album
                 DZ.api(`/search/album?q=${searchword}`, function (response) {
@@ -53,13 +53,35 @@ window.onload = function () {
                         htmlString += ` <div class="elementContainer">
                  <a href=""> <img src="${coverImage}" alt=""></a>
                  <p>${title}</p>
-                 <p class="secondp">${artist}</p>
+                 <p class="secondp" style="font-size:12px">${artist}</p>
              </div>`
 
                         document.getElementById("showContainer").innerHTML = htmlString;
                     });
                 })
 
+            } else if (document.getElementById('art').checked) {
+                console.log("troisieme");
+                //search artist
+                DZ.api(`/search/artist?q=${searchword}`, function (response) {
+                    console.log("search on: ", searchword);
+                    console.log("fetch:", response.data);
+                    let htmlString = "";
+                    response.data.slice(0, 25).forEach(item => {
+                        //console.log("here are your items: ", item);
+                        const coverImage = item.picture_medium
+                        const title = item.name
+                        const artist = item.nb_fan
+                        //console.log("c ca", artist);
+                        htmlString += ` <div class="elementContainer">
+                 <a href=""> <img src="${coverImage}" alt=""></a>
+                 <p>${title}</p>
+                 <p class="secondp" style="font-size:12px">${artist} followers</p>
+             </div>`
+
+                        document.getElementById("showContainer").innerHTML = htmlString;
+                    });
+                })
             }
         })
     };
