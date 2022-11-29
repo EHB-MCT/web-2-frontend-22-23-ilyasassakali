@@ -28,7 +28,7 @@ window.onload = function () {
                 htmlString += ` <div class="elementContainer">
                 <a href=""> <img src="${coverImage}" alt=""></a>
                 <p>${title}</p>
-                <p class="secondp">${artist}</p>
+                <p class="secondp" style="font-size:12px">${artist}</p>
             </div>`
 
                 container.insertAdjacentHTML("beforeend", htmlString);
@@ -57,7 +57,7 @@ window.onload = function () {
                 htmlString += ` <div class="elementContainer">
                 <a href=""> <img src="${coverImage}" alt=""></a>
                 <p>${album}</p>
-                <p class="secondp">${artist}</p>
+                <p class="secondp" style="font-size:12px">${artist}</p>
             </div>`
 
 
@@ -87,7 +87,7 @@ window.onload = function () {
                 htmlString += ` <div class="elementContainer">
                 <a href=""> <img  src="${artistImage}" alt=""></a>
                 <p>${artistName}</p>
-                <p class="secondp">${type}</p>
+                <p class="secondp" style="font-size:12px">${type}</p>
             </div>`
 
 
