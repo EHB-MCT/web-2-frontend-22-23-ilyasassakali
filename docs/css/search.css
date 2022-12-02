@@ -166,6 +166,10 @@ body {
 
 }
 
+.todaysHits .showContainer .elementContainer img:hover {
+    opacity: 50%;
+
+}
 
 
 
