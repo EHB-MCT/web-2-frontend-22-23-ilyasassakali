@@ -31,11 +31,10 @@ window.onload = function () {
                         const artist = item.artist.name
                         const id = item.id
                         //console.log("c ca", artist);
-                        htmlString += ` <div class="elementContainer">
+                        htmlString += ` <div id=${id} class="elementContainer">
                             <a href="" ><img src="${coverImage}" alt=""></a>
                             <p>${title}</p>
                             <p class="secondp" style="font-size:12px">${artist}</p>
-                            <p style="display:none">${id}</p>
                         </div>`
 
                         document.getElementById("showContainer").innerHTML = htmlString;
@@ -43,9 +42,10 @@ window.onload = function () {
                         //redirect you to moreinfopage 
                         const tracks = document.getElementsByClassName("elementContainer")
                         const trackArray = Array.from(tracks)
+                        console.log(trackArray);
                         trackArray.map(track => track.addEventListener("click", function (event) {
 
-                            const trackID = track.lastElementChild.innerHTML
+                            const trackID = track.id
                             event.preventDefault()
                             console.log(trackID);
 
