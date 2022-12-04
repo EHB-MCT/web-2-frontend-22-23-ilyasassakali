@@ -30,6 +30,8 @@ window.onload = function () {
             </div>`
 
                 container.insertAdjacentHTML("beforeend", htmlString);
+
+                //redirect you to moreinfopage 
                 const hitElement = document.getElementById(id)
                 hitElement.addEventListener("click", function (event) {
                     event.preventDefault()
@@ -44,13 +46,13 @@ window.onload = function () {
         DZ.api('/chart/0/albums', function (response) {
             console.log("fetch:", response.data);
 
-            response.data.forEach(_album => {
-                ////console.log("here are your _albums: ", _album);
+            response.data.forEach(item => {
+                ////console.log("here are your item: ", item);
 
-                const coverImage = _album.cover_medium
-                const album = _album.title
-                const artist = _album.artist.name
-                const id = _album.id
+                const coverImage = item.cover_medium
+                const album = item.title
+                const artist = item.artist.name
+                const id = item.id
                 ////console.log("c ca", artist);
 
                 let container = document.getElementById("showContainer2");
@@ -63,10 +65,11 @@ window.onload = function () {
             </div>`
 
                 container.insertAdjacentHTML("beforeend", htmlString);
+
+                //redirect you to moreinfopage 
                 const albumElement = document.getElementById(id);
                 albumElement.addEventListener("click", (event) => {
                     event.preventDefault()
-                    //console.log(artistID);
                     window.location.assign(`./moreInfo.html?idalbum=${id}`)
                 })
             });
@@ -95,6 +98,8 @@ window.onload = function () {
             </div>`
 
                 container.insertAdjacentHTML("beforeend", htmlString);
+
+                //redirect you to moreinfopage 
                 const artistElement = document.getElementById(id)
                 artistElement.addEventListener("click", function (event) {
                     event.preventDefault()

@@ -5,7 +5,7 @@ window.onload = function () {
     fetchMoreInfoPage();
 
     function fetchMoreInfoPage() {
-        //https://youtu.be/CZP1iQFQjEY
+        //https://youtu.be/CZP1iQFQjEY 
         const idkey = window.location.search;
         const urlParams = new URLSearchParams(idkey);
         const trackID = urlParams.get('idtrack');

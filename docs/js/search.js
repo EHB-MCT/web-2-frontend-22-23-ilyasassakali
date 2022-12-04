@@ -13,8 +13,6 @@ window.onload = function () {
         searched.addEventListener("keyup", function (event) {
             let searchword = searched.value.toLowerCase()
 
-
-
             if (document.getElementById('tra').checked) {
                 //search track
                 //console.log("je cherche:", searchword);
@@ -39,6 +37,7 @@ window.onload = function () {
 
                         document.getElementById("showContainer").innerHTML = htmlString;
 
+
                         //redirect you to moreinfopage 
                         const tracks = document.getElementsByClassName("elementContainer")
                         const trackArray = Array.from(tracks)
@@ -46,7 +45,7 @@ window.onload = function () {
                         trackArray.map(track => track.addEventListener("click", function (event) {
                             event.preventDefault()
                             const trackID = track.id
-                            
+
                             console.log(trackID);
 
                             window.location.href = `./moreInfo.html?idtrack=${trackID}`;
@@ -82,7 +81,7 @@ window.onload = function () {
                         albumArray.map(album => album.addEventListener("click", function (event) {
                             event.preventDefault()
                             const albumID = album.id
-                            
+
                             console.log(albumID);
 
                             window.location.href = `./moreInfo.html?idalbum=${albumID}`;
@@ -111,7 +110,7 @@ window.onload = function () {
                  <p class="secondp" style="font-size:12px">${artist} followers</p>
              </div>`
                         document.getElementById("showContainer").innerHTML = htmlString;
- 
+
                         //redirect you to moreinfopage 
                         const artists = document.getElementsByClassName("elementContainer")
                         const artistArray = Array.from(artists)
