@@ -51,7 +51,7 @@ window.onload = function () {
                             window.location.href = `./moreInfo.html?idtrack=${trackID}`;
                         }))
                     });
-                })
+                }) 
             } else if (document.getElementById('alb').checked) {
                 //search album
                 //console.log("le deuxieme");

@@ -16,7 +16,7 @@ window.onload = function () {
         if (trackID) {
             //fetch moreinfo about tracks
             DZ.api(`/track/${trackID}`, function (response) {
-                console.log("fetch:", response);
+                //console.log("fetch:", response);
 
                 let htmlString = "";
 
@@ -27,6 +27,7 @@ window.onload = function () {
                 const type = response.type
                 const date = response.album.release_date
                 const trackOfAlbum = response.album.title
+                const preview = response.preview
 
                 let duration = response.duration
                 //https://bobbyhadz.com/blog/javascript-convert-seconds-to-minutes-and-seconds
@@ -57,17 +58,46 @@ window.onload = function () {
                       </div>
                    </div>
                    <div class='btns'>
-                         <button class="moreinfobtn">PLAY</button>
+                         <button id="moreinfobtn" class="moreinfobtn">PLAY</button>
                          <button class="moreinfobtn2">MUZZ</button>
                          </div>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
 
+                playPreview();
+
+                function playPreview() {
+                    console.log("init");
+                    console.log("c lartist", artist);
+                    const playbtn = document.getElementById('moreinfobtn')
+
+                    playbtn.addEventListener("click", () => {
+                        console.log(preview);
+                        let htmlString = "";
+                        htmlString += `<div class="track">
+                        <div class="pictrack">
+                            <img src="${coverImage}">
+                        </div>
+                        <div class="nametrack">
+                            <p>${title}</p>
+                            <p class="trackartist">${artistname}</p>
+                        </div>
+                    </div>
+        
+                    <div id="container-audio" class="container-audio">
+                        <audio controls loop autoplay>
+                            <source src="${preview}">
+                        </audio>
+                    </div>
+                    <a href="">MUZZ IT!</a>`
+                        document.getElementById("playerNav").innerHTML = htmlString;
+                    })
+                }
             })
         } else if (albumID) {
             //fetch moreinfo about albums
             DZ.api(`/album/${albumID}`, function (response) {
-                console.log("fetch:", response);
+                // console.log("fetch:", response);
 
                 let htmlString = "";
 
@@ -120,7 +150,7 @@ window.onload = function () {
         } else if (artistID) {
             //fetch moreinfo about albums
             DZ.api(`/artist/${artistID}`, function (response) {
-                console.log("fetch:", response);
+                //console.log("fetch:", response);
 
                 let htmlString = "";
 
@@ -130,7 +160,7 @@ window.onload = function () {
                 const numberFans = response.nb_fan
                 const numberAlbums = response.nb_album
 
-                console.log(coverImage);
+                //console.log(coverImage);
 
                 htmlString += ` <div class="elementContainer">
                 <div >
@@ -155,5 +185,11 @@ window.onload = function () {
                 document.getElementById("showContainer").innerHTML = htmlString;
             })
         }
+
+
     }
+
+
+
+
 }
