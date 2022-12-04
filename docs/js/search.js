@@ -111,7 +111,7 @@ window.onload = function () {
                  <p class="secondp" style="font-size:12px">${artist} followers</p>
              </div>`
                         document.getElementById("showContainer").innerHTML = htmlString;
-
+ 
                         //redirect you to moreinfopage 
                         const artists = document.getElementsByClassName("elementContainer")
                         const artistArray = Array.from(artists)

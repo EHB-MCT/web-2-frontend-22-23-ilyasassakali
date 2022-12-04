@@ -20,7 +20,6 @@ window.onload = function () {
 
                 let htmlString = "";
 
-
                 const coverImage = response.album.cover_big
                 const title = response.title
                 const artist = response.artist.picture_medium
