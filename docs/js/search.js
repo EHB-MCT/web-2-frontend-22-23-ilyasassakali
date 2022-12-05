@@ -5,12 +5,23 @@ window.onload = function () {
     searchOnName();
 
 
-
     function searchOnName() {
 
-        //let clicked = document.getElementsById('radio-group')
+        let searchclick = document.getElementById('srch');
         let searched = document.getElementById('searchbar');
-        searched.addEventListener("keyup", function (event) {
+
+        //https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+        //search by press enter
+        let input = document.getElementById("searchbar");
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("srch").click();
+            }
+        })
+
+        //search by clicking searchbutton
+        searchclick.addEventListener('click', function (event) {
             let searchword = searched.value.toLowerCase()
 
             if (document.getElementById('tra').checked) {
@@ -51,10 +62,11 @@ window.onload = function () {
                             window.location.href = `./moreInfo.html?idtrack=${trackID}`;
                         }))
                     });
-                }) 
+                })
             } else if (document.getElementById('alb').checked) {
                 //search album
                 //console.log("le deuxieme");
+
 
                 DZ.api(`/search/album?q=${searchword}`, function (response) {
 
@@ -90,6 +102,8 @@ window.onload = function () {
 
                     });
                 })
+
+
             } else if (document.getElementById('art').checked) {
                 //search artist
                 //console.log("troisieme");
@@ -124,6 +138,8 @@ window.onload = function () {
                     });
                 })
             }
+
+
         })
     };
 }

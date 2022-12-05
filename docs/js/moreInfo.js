@@ -89,7 +89,7 @@ window.onload = function () {
                             <source src="${preview}">
                         </audio>
                     </div>
-                    <a href="">MUZZ IT!</a>`
+                    <button class="moreinfobtn3">MUZZ</button>`
                         document.getElementById("playerNav").innerHTML = htmlString;
                     })
                 }

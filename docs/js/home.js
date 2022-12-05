@@ -15,7 +15,7 @@ window.onload = function () {
             response.data.forEach(item => {
                 ////console.log("here are your items: ", item);
                 const coverImage = item.album.cover_medium
-                const title = item.album.title
+                const title = item.title
                 const artist = item.artist.name
                 const id = item.id
                 ////console.log("c ca", artist);
