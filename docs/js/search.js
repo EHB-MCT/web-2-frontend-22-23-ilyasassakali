@@ -56,11 +56,11 @@ window.onload = function () {
                         trackArray.map(track => track.addEventListener("click", function (event) {
                             event.preventDefault()
                             const trackID = track.id
-
-                            console.log(trackID);
-
                             window.location.href = `./moreInfo.html?idtrack=${trackID}`;
                         }))
+
+
+
                     });
                 })
             } else if (document.getElementById('alb').checked) {
@@ -93,11 +93,10 @@ window.onload = function () {
                         albumArray.map(album => album.addEventListener("click", function (event) {
                             event.preventDefault()
                             const albumID = album.id
-
                             console.log(albumID);
-
                             window.location.href = `./moreInfo.html?idalbum=${albumID}`;
                         }))
+
 
 
                     });
@@ -138,8 +137,6 @@ window.onload = function () {
                     });
                 })
             }
-
-
         })
     };
 }

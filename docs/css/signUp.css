@@ -8,15 +8,16 @@
 
 /*hoofdkleuren
 #0b1321
-#111723
+#111723 
 #ff69fa
 */
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0b1321;
+    /*background-color: #0b1321;
     background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);*/
+    background-color: #f28cef;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +49,7 @@ span {
 }
 
 .btn {
-    border-radius: 20px;
+    border-radius: 50px;
     border: 1px solid #ff69fa;
     background-color: #ff69fa;
     color: #FFFFFF;

@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-/*hoofdkleuren 
+/*hoofdkleuren  
 #0b1321
 #111723
 #ff69fa 
@@ -14,9 +14,10 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0b1321;
+    /* background-color: #0b1321;
     background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);*/
+    background-color: #f28cef;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +49,7 @@ span {
 }
 
 .btn {
-    border-radius: 30px;
+    border-radius: 50px;
     border: 1px solid #ff69fa;
     background-color: #ff69fa;
     color: #FFFFFF;
@@ -89,6 +90,7 @@ input {
     width: 1200px;
     max-width: 100%;
     min-height: 600px;
+    /*box-shadow: 1px 1px 20px #ff69fa; */
 }
 
 .form-container {
