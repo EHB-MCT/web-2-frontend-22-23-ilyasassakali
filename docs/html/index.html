@@ -10,22 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUZZY</title>
     <link rel="stylesheet" href="../css/index.css">
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/index.js"></script>
 </head>
 
 <body>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form id="loginform">
                 <div class="muzzylogo">
                     <img src="../images/logomuzzy.png" alt="">
                     <h1>MUZZY</h1>
                 </div>
                 <h1>Sign in</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input id="inputEmail" type="email" placeholder="Email" />
+                <input id="inputPassword" type="password" placeholder="Password" />
                 <a href="./signUp.html">Not registered on MUZZY yet? <span>SIGN UP HERE</span></a>
-                <a class="btn" href="#">Sign In</a>
+                <button type="submit" class="btn">Sign In</button>
                 <a class="pri" href="">Google PRIVACY POLICY and TERMS OF SERVICE apply.</a>
             </form>
         </div>
