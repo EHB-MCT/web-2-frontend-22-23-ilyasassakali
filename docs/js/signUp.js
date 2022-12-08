@@ -13,13 +13,15 @@ document.getElementById('loginform').addEventListener("submit", event => {
         //register the user
         getData("http://localhost:3000/register", "POST", user).then(data => {
             alert(data.message)
+            window.location.href = `./index.html`
         })
+        
     } else {
         alert("Password do not match")
     }
 })
 
- 
+
 
 
 async function getData(url, method, data) {

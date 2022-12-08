@@ -18,6 +18,8 @@ document.getElementById('loginform').addEventListener("submit", event => {
     //check for login
     getData("http://localhost:3000/login", "POST", user).then(result => {
         sessionStorage.setItem('user', JSON.stringify(result.data))
+        alert(result.message)
+        window.location.href = `./home.html`
     })
 
 

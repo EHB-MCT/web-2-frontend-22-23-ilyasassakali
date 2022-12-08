@@ -9,15 +9,15 @@
 /*hoofdkleuren
 #0b1321
 #111723 
-#ff69fa
+#ff69fa 
 */
 
 body {
     font-family: 'Poppins', sans-serif;
-    /*background-color: #0b1321;
-    background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);*/
-    background-color: #f28cef;
+    background: #151515;
+    background-image: url(../images/loginpicbg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,6 +90,7 @@ input {
     width: 1200px;
     max-width: 100%;
     min-height: 600px;
+    box-shadow: 1px 1px 20px #ff69fa;
 }
 
 .form-container {
