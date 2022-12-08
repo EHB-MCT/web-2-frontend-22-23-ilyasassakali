@@ -1,5 +1,7 @@
 "use strict"
 
+/*const { result } = require("lodash");*/
+
 /*
 const {
     method
@@ -13,12 +15,9 @@ document.getElementById('loginform').addEventListener("submit", event => {
     user.email = document.getElementById('inputEmail').value;
     user.password = document.getElementById('inputPassword').value;
 
-    //console.log(email, password);
-
-
     //check for login
-    getData("http://localhost:3000/login", "POST", user).then(data => {
-        console.log(data);
+    getData("http://localhost:3000/login", "POST", user).then(result => {
+        sessionStorage.setItem('user', JSON.stringify(result.data))
     })
 
 
