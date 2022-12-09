@@ -149,6 +149,16 @@ h3:hover {
 
 }
 
+.songPage .topnav {
+    width: 90%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
 .elementContainer .secondp {
     opacity: 80%;
     font-size: 15px;
@@ -167,7 +177,6 @@ h3:hover {
 .todaysHits .showContainer .elementContainer {
     width: 18%;
     background-color: #181e28;
-
     margin-bottom: 20px;
 }
 
@@ -195,8 +204,8 @@ h3:hover {
     padding: 0px 40px;
     position: fixed;
     bottom: 0;
-    box-shadow: 5px 0px 12px #ff69fa; 
-   
+    box-shadow: 5px 0px 12px #ff69fa;
+
 
 }
 
@@ -286,14 +295,6 @@ audio::-webkit-media-controls-time-remaining-display {
 
 
 /*playernav*/
-
-.profilesection {
-    position: fixed;
-    top: 30px;
-    right: 27px;
-}
-
-
 
 @media(min-width: 1500px) {
     body {

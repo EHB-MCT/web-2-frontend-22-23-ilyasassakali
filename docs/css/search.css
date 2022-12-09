@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-/*hoofdkleuren
+/*hoofdkleuren 
 #181e28
 #111723
 #ff69fa
@@ -19,8 +19,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 230vh;
-
+    height: 250vh;
 }
 
 .headNavs {
@@ -297,6 +296,7 @@ audio::-webkit-media-controls-time-remaining-display {
 /*playernav*/
 
 .searchbarsection {
+    margin-left: 5%;
     width: 90%;
     margin-top: 20px;
     display: flex;
@@ -353,10 +353,13 @@ label+input[type=radio]+label {
 
 
 
-.profilesection {
-    position: fixed;
-    top: 30px;
-    right: 27px;
+.songPage .topnav {
+    margin-top: 25px;
+    width: 90%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -366,7 +369,16 @@ label+input[type=radio]+label {
     body {
 
 
-        height: 200vh;
+        height: 220vh;
 
+    }
+
+    .searchbarsection {
+        margin-left: 4%;
+
+    }
+
+    .songPage .topnav {
+        margin-top: 20px;
     }
 }
