@@ -8,7 +8,7 @@
 
 /*hoofdkleuren
 #181e28
-#111723
+#111723 
 #ff69fa
 */
 
@@ -155,7 +155,7 @@ body {
 
 
 }
- 
+
 .todaysHits .showContainer .elementContainer {
 
     /*background-color: #181e28;*/
@@ -245,7 +245,7 @@ body {
 
 .moreinfobtn:hover,
 .moreinfobtn2:hover,
-.moreinfobtn3:hover  {
+.moreinfobtn3:hover {
 
     opacity: 50%;
 
@@ -345,13 +345,13 @@ body {
 
 audio::-webkit-media-controls-enclosure {
     background-color: #3b3f47;
-    
+
 }
 
 
 audio::-webkit-media-controls-current-time-display {
     text-shadow: none;
-    
+
 }
 
 audio::-webkit-media-controls-time-remaining-display {
@@ -417,10 +417,13 @@ label+input[type=radio]+label {
 }
 
 
-.profilesection {
-    position: fixed;
-    top: 30px;
-    right: 27px;
+.songPage .topnav {
+    margin-top: 25px;
+    width: 90%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
