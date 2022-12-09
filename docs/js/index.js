@@ -15,12 +15,21 @@ document.getElementById('loginform').addEventListener("submit", event => {
     user.email = document.getElementById('inputEmail').value;
     user.password = document.getElementById('inputPassword').value;
 
-    //check for login
-    getData("http://localhost:3000/login", "POST", user).then(result => {
-        sessionStorage.setItem('user', JSON.stringify(result.data))
-        alert(result.message)
-        window.location.href = `./home.html`
-    })
+    if (user.email && user.password) {
+        //check for login
+        getData("http://localhost:3000/login", "POST", user).then(result => {
+            sessionStorage.setItem('user', JSON.stringify(result.data))
+            console.log("c ca fd", sessionStorage.user);
+            alert(result.message)
+            if (sessionStorage.user != 'undefined') {
+                window.location.href = `./home.html`
+            }
+
+        })
+    } else {
+        alert("Login failed")
+    }
+
 
 
 })
