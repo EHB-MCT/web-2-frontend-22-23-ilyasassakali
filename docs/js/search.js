@@ -3,8 +3,6 @@
 window.onload = function () {
 
     searchOnName();
-
-
     function searchOnName() {
 
         let searchclick = document.getElementById('srch');
@@ -26,7 +24,7 @@ window.onload = function () {
 
             if (document.getElementById('tra').checked) {
                 //search track
-                //console.log("je cherche:", searchword);
+                console.log("je cherche:", searchword);
 
                 //console.log("le premier");
                 DZ.api(`/search/track?q=${searchword}`, function (response) {

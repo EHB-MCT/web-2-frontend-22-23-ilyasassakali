@@ -27,7 +27,7 @@ document.getElementById('loginform').addEventListener("submit", event => {
 
         })
     } else {
-        alert("Login failed")
+        alert("Some fields are missing: email, password")
     }
 
 
