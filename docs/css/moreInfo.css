@@ -8,7 +8,7 @@
 
 /*hoofdkleuren
 #181e28
-#111723 
+#111723  
 #ff69fa
 */
 
@@ -276,6 +276,94 @@ body {
     cursor: pointer;
     box-shadow: 0px 0px 8px #ff69fa;
 }
+
+.topArtist h2 {
+    margin: 30px 0 0 0;
+}
+
+.trackContainer {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+
+
+}
+
+
+.trackContainer .subtop {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+
+
+.trackContainer .subtext {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+
+}
+
+.trackContainer img {
+    width: 60px;
+
+}
+
+
+/**/
+.trackContaineradd {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    cursor: pointer;
+}
+
+.trackContaineradd:hover {
+    background-color: #111723;
+
+}
+
+
+.trackContaineradd .subtop {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+
+
+.trackContaineradd .subtext {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+
+}
+
+.trackContaineradd img {
+    width: 60px;
+
+}
+
+.blocktitle {
+    margin-left: 10px;
+}
+
+.subtop .trackartist {
+    font-size: 13px;
+    opacity: 80%;
+}
+
 
 
 /*songpage*/

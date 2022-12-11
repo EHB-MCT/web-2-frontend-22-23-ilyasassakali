@@ -137,7 +137,7 @@ window.onload = function () {
                         showResult(searchword)
                     }
 
-
+ 
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
                         //console.log("here are your items: ", item);

@@ -5,7 +5,7 @@ window.onload = function () {
     fetchMoreInfoPage();
 
     function fetchMoreInfoPage() {
-        //https://youtu.be/CZP1iQFQjEY 
+        //https://youtu.be/CZP1iQFQjEY  
         const idkey = window.location.search;
         const urlParams = new URLSearchParams(idkey);
         const trackID = urlParams.get('idtrack');
@@ -67,12 +67,12 @@ window.onload = function () {
                 playPreview();
 
                 function playPreview() {
-                    console.log("init");
-                    console.log("c lartist", artist);
+                    //console.log("init");
+                    //console.log("c lartist", artist);
                     const playbtn = document.getElementById('moreinfobtn')
 
                     playbtn.addEventListener("click", () => {
-                        console.log(preview);
+                        //console.log(preview);
                         let htmlString = "";
                         htmlString += `<div class="track">
                         <div class="pictrack">
@@ -93,7 +93,81 @@ window.onload = function () {
                         document.getElementById("playerNav").innerHTML = htmlString;
                     })
                 }
+
+                //show related titles of artist of the moment in top section
+                const id = response.artist.id
+                DZ.api(`/artist/${id}/top`, function (response) {
+                    //console.log("c ca khey", response.data);
+
+
+                    response.data.slice(0, 5).forEach(item => {
+                        //console.log("here are your items: ", item);
+                        const minicoverImage = item.album.cover_medium
+                        const minititle = item.title
+                        const miniartist = item.artist.name
+                        const miniid = item.id
+                        //console.log(miniid);
+                        const minialbum = item.album.title
+                        const miniduration = item.duration
+
+                        //https://bobbyhadz.com/blog/javascript-convert-seconds-to-minutes-and-seconds
+                        const minutes = Math.floor(miniduration / 60);
+                        const seconds = miniduration % 60;
+
+                        function padTo2Digits(num) {
+                            return num.toString().padStart(2, '0');
+                        }
+                        const durationmin = `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
+
+                        let htmlString2 = "";
+                        let container = document.getElementById("topArtistadd");
+                        let htmlString = "";
+                        htmlString += ` 
+                        <div id=${miniid}  class="trackContaineradd">
+                        <div class="subtop">
+                            <img src="${minicoverImage}">
+                            <div class="blocktitle">
+                                 <p>${minititle}</p>
+                                <p class="trackartist">${miniartist}</p>
+                            </div>
+                        </div>
+                        <div class="subtext">
+                            <p>${minialbum}</p>
+                            <p>${durationmin}</p>
+                        </div>
+                        </div>`
+
+                        htmlString2 += `<h2>Top related Tracks</h2>
+                        <div id="trackContainer" class="trackContainer">
+                            <div class="subtop">
+                                <p>Title</p>
+                            </div>
+                            <div class="subtext">
+                                <p>Album</p>
+                                <p>Duration</p>
+                            </div>
+                        </div>`
+
+                        //document.getElementById("topArtistadd").innerHTML = htmlString;
+                        container.insertAdjacentHTML("beforeend", htmlString);
+                        document.getElementById("topArtist").innerHTML = htmlString2;
+
+
+                        //redirect you to moreinfopage  
+                        const hitElement = document.getElementById(miniid)
+                        hitElement.addEventListener("click", function (event) {
+                            event.preventDefault()
+                            console.log(miniid);
+                            window.location.assign(`./moreInfo.html?idtrack=${miniid}`)
+                        })
+                    });
+
+                })
+
+
             })
+
+
         } else if (albumID) {
             //fetch moreinfo about albums
             DZ.api(`/album/${albumID}`, function (response) {
@@ -185,11 +259,5 @@ window.onload = function () {
                 document.getElementById("showContainer").innerHTML = htmlString;
             })
         }
-
-
     }
-
-
-
-
 }

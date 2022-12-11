@@ -17,7 +17,7 @@ window.onload = function () {
                 const coverImage = item.album.cover_medium
                 const title = item.title
                 const artist = item.artist.name
-                const id = item.id
+                const id = item.id 
                 ////console.log("c ca", artist);
 
                 let container = document.getElementById("showContainer");
@@ -27,11 +27,11 @@ window.onload = function () {
                 <a href=""> <img src="${coverImage}" alt=""></a>
                 <p>${title}</p>
                 <p class="secondp" style="font-size:12px">${artist}</p>
-            </div>`
+            </div>` 
 
                 container.insertAdjacentHTML("beforeend", htmlString);
 
-                //redirect you to moreinfopage 
+                //redirect you to moreinfopage  
                 const hitElement = document.getElementById(id)
                 hitElement.addEventListener("click", function (event) {
                     event.preventDefault()
