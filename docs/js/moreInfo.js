@@ -59,10 +59,18 @@ window.onload = function () {
                    </div>
                    <div class='btns'>
                          <button id="moreinfobtn" class="moreinfobtn">PLAY</button>
-                         <button class="moreinfobtn2">MUZZ</button>
+                         <button id="moreinfobtn2" class="moreinfobtn2">MUZZ</button>
                          </div>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
+
+                //redirect you to DoMuzz page
+                const muzzbtn = document.getElementById('moreinfobtn2')
+                muzzbtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    window.location.assign(`./domuzz.html?idtrack=${trackID}`)
+                })
+
 
                 playPreview();
 
@@ -215,10 +223,17 @@ window.onload = function () {
            </div>
            <div class='btns'>
                  
-                 <button class="moreinfobtn2">MUZZ</button>
+                 <button id="moreinfobtn2" class="moreinfobtn2">MUZZ</button>
                  </div>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
+
+                //redirect you to DoMuzz page
+                const muzzbtn = document.getElementById('moreinfobtn2')
+                muzzbtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    window.location.assign(`./domuzz.html?idalbum=${albumID}`)
+                })
 
                 //show the tracks of the album
 
@@ -321,10 +336,19 @@ window.onload = function () {
               </div>
            </div>
            <div class='btns'>
-                 <button class="moreinfobtn2">MUZZ</button>
+                 <button id="moreinfobtn2" class="moreinfobtn2">MUZZ</button>
                  </div>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
+
+
+                //redirect you to DoMuzz page
+                const muzzbtn = document.getElementById('moreinfobtn2')
+                muzzbtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    window.location.assign(`./domuzz.html?idartist=${artistID}`)
+                })
+
 
                 //show related artists of chosen artist 
 

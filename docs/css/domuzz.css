@@ -1,0 +1,585 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*hoofdkleuren
+#181e28 
+#111723  
+#ff69fa
+*/
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #111723;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 550vh;
+}
+
+.headNavs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+/*leftnav*/
+
+.headNavs .leftNav {
+    position: fixed;
+    box-shadow: 0px 0px 12px #ff69fa;
+    color: #fff;
+    width: 15%;
+    height: 90%;
+    background-color: #181e28;
+}
+
+.muzzylogo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.muzzylogo h1 {
+    font-size: 40px;
+}
+
+.muzzylogo img {
+    margin: auto 0;
+    width: 34px;
+    height: 30px;
+}
+
+
+
+.menuList {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+
+}
+
+.menuList li {
+    list-style: none;
+    margin-bottom: 20px;
+
+}
+
+.menuList li a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.menuList li a:hover {
+    text-decoration: none;
+    color: #ff69fa;
+
+}
+
+.active {
+    border-bottom: 2px solid #ff69fa;
+
+}
+
+
+
+.menuList i {
+    margin-right: 10px;
+}
+
+.menuList .subList {
+    font-size: 13px;
+    margin-left: 30px;
+    opacity: 80%;
+}
+
+
+/*leftnav*/
+/*songpage*/
+.headNavs .songPage {
+
+    color: #fff;
+    width: 85%;
+    height: 90%;
+    background-color: #111723;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 15%;
+    margin-top: 20px;
+
+}
+
+.songPage .todaysHits .moreContainer {
+
+    margin-bottom: 20px;
+    background-color: #181e28;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.songPage .todaysHits .moreContainer a {
+    text-decoration: none;
+    color: white;
+}
+
+.songPage .todaysHits {
+    width: 90%;
+    background-color: #181e28;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.elementContainer .secondp {
+    opacity: 80%;
+    font-size: 15px;
+}
+
+.songPage .todaysHits .showContainer {
+    width: 100%;
+
+    background-color: #181e28;
+
+
+}
+
+.todaysHits .showContainer .elementContainer {
+
+    /*background-color: #181e28;*/
+    margin-bottom: 20px;
+    display: flex;
+
+}
+
+.todaysHits .showContainer .elementContainer .textsection {
+
+    background-color: #181e28;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.todaysHits .showContainer .elementContainer .bigimg {
+    width: 250px;
+
+}
+
+.todaysHits .showContainer .elementContainer .smallimg {
+    width: 50px;
+    border-radius: 100%;
+
+}
+
+.bigtitle {
+
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.bigtitle2 {
+
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.textsection p {
+    font-size: 14px;
+
+}
+
+.artsec {
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.artp {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.btns {
+
+    display: flex;
+
+}
+
+.moreinfobtn {
+    font-size: 15px;
+    width: 110px;
+    height: 40px;
+    border-radius: 100px;
+    border: 0px solid #ff69fa;
+    margin-right: 30px;
+    background-color: transparent;
+    color: #ff69fa;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px #ff69fa;
+
+
+
+}
+
+.moreinfobtn:hover,
+.moreinfobtn2:hover,
+.moreinfobtn3:hover {
+
+    opacity: 50%;
+
+
+}
+
+.moreinfobtn2 {
+    font-size: 15px;
+    width: 110px;
+    height: 40px;
+    border-radius: 100px;
+    border: 0px solid #ff69fa;
+    margin-right: 30px;
+    background-color: transparent;
+    color: #ff69fa;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px #ff69fa;
+}
+
+.moreinfobtn3 {
+    font-size: 15px;
+    width: 110px;
+    height: 40px;
+    border-radius: 100px;
+    border: 0px solid #ff69fa;
+    background-color: transparent;
+    color: #ff69fa;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px #ff69fa;
+}
+
+.topArtist h2 {
+    margin: 30px 0 0 0;
+}
+
+.trackContainer {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+
+
+}
+
+
+.trackContainer .subtop {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+
+
+.trackContainer .subtext {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+
+}
+
+.trackContainer img {
+    width: 60px;
+
+}
+
+
+/**/
+.trackContaineradd {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    cursor: pointer;
+}
+
+.trackContaineradd:hover {
+    background-color: #111723;
+
+}
+
+
+.trackContaineradd .subtop {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+
+
+.trackContaineradd .subtext {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+
+}
+
+.trackContaineradd img {
+    width: 60px;
+
+}
+
+.blocktitle {
+    margin-left: 10px;
+}
+
+.subtop .trackartist {
+    font-size: 13px;
+    opacity: 80%;
+}
+
+.artsection {
+    width: 32%;
+    height: 70px;
+    background-color: #111723;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.artsection:hover {
+    opacity: 50%;
+
+}
+
+.artsection p {
+    margin-left: 10px;
+}
+
+.artsection img {
+    width: 70px;
+    border-radius: 10px;
+}
+
+.flexartsec {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+
+
+}
+
+.w3review {
+    width: 500px;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #111723;
+    color: white;
+    border: 1px solid white;
+
+}
+
+.w3review2 {
+    width: 100px;
+    height: 50px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #111723;
+    color: white;
+    border: 1px solid white;
+    text-align: center;
+
+}
+
+
+form h3 {
+    margin-bottom: 20px;
+}
+
+/*songpage*/
+
+/*playernav*/
+.headNavs .playerNav {
+    background-color: #181e28;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 40px;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 5px 0px 12px #ff69fa;
+
+}
+
+.playerNav img {
+    width: 60px;
+    height: 60px;
+}
+
+.playerNav .track {
+
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.playerNav .nametrack {
+    margin-left: 20px;
+
+}
+
+
+.playerNav .track .trackartist {
+    font-size: 13px;
+    opacity: 80%;
+}
+
+.playerNav a {
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.playerNav .container-audio {
+    width: 50%;
+    border-radius: 15px;
+    margin-top: 10px;
+
+
+}
+
+.playerNav audio {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+
+}
+
+
+audio::-webkit-media-controls-enclosure {
+    background-color: #3b3f47;
+
+}
+
+
+audio::-webkit-media-controls-current-time-display {
+    text-shadow: none;
+
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+
+    text-shadow: none;
+}
+
+/*playernav*/
+
+.searchbarsection {
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.searchbar {
+    font-size: 15px;
+    width: 300px;
+    border: 1px solid #111723;
+    padding-left: 20px;
+    background-color: #181e28;
+    height: 40px;
+    border-radius: 100px;
+    color: white;
+    box-shadow: 0px 0px 8px #ff69fa;
+    margin-right: 100px;
+}
+
+/*radiobuttons*/
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+
+}
+
+label {
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+}
+
+input[type=radio]:checked+label {
+    color: #ff69fa;
+}
+
+label+input[type=radio]+label {
+    border-left: 1px solid #ff69fa;
+}
+
+.radio-group {
+    box-shadow: 0px 0px 8px #ff69fa;
+    height: 40px;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+
+.songPage .topnav {
+    margin-top: 25px;
+    width: 90%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+@media(min-width: 1500px) {
+    body {
+        height: 400vh;
+    }
+
+
+}
