@@ -153,11 +153,11 @@ window.onload = function () {
                         document.getElementById("topArtist").innerHTML = htmlString2;
 
 
-                        //redirect you to moreinfopage  
+                        //redirect you to about track page  
                         const hitElement = document.getElementById(miniid)
                         hitElement.addEventListener("click", function (event) {
                             event.preventDefault()
-                            console.log(miniid);
+                            //console.log(miniid);
                             window.location.assign(`./moreInfo.html?idtrack=${miniid}`)
                         })
                     });
@@ -255,7 +255,7 @@ window.onload = function () {
                     </div>
                     </div>`
 
-                    console.log(miniid);
+                    //console.log(miniid);
                     /**/
                     let container = document.getElementById("topArtistadd");
 
@@ -275,11 +275,11 @@ window.onload = function () {
                     document.getElementById("topArtist").innerHTML = htmlString2;
                     container.insertAdjacentHTML("beforeend", htmlString3);
                     /**/
-                    //redirect you to moreinfopage  
+                    //redirect you to track about page  
                     const hitElement = document.getElementById(miniid)
                     hitElement.addEventListener("click", function (event) {
                         event.preventDefault()
-                        console.log(miniid);
+                        //console.log(miniid);
                         window.location.assign(`./moreInfo.html?idtrack=${miniid}`)
                     })
 
@@ -319,11 +319,47 @@ window.onload = function () {
               </div>
            </div>
            <div class='btns'>
-                 
                  <button class="moreinfobtn2">MUZZ</button>
                  </div>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
+
+                //show related artists of chosen artist 
+
+                DZ.api(`/artist/${artistID}/related`, function (response) {
+                    //console.log("oue gaté: ", response.data);
+
+                    response.data.slice(0, 18).forEach(item => {
+                        const minicoverImage = item.picture_medium
+                        const artistname = item.name
+                        const miniid = item.id
+                        let htmlString2 = "";
+                        let container = document.getElementById("flexartsec");
+                        let htmlString = "";
+                        htmlString += `
+                             <div  id=${miniid} id="artsection" class="artsection">
+                                 <img src="${minicoverImage}">
+                            <p>${artistname}</p>
+                             </div>`
+
+                        htmlString2 += `<h2 style="margin-bottom:30px">Related Artists</h2>`
+                        container.insertAdjacentHTML("beforeend", htmlString);
+                        document.getElementById("topArtist").innerHTML = htmlString2;
+
+                        //redirect you to artist about page  
+                        const artistElement = document.getElementById(miniid)
+                        artistElement.addEventListener("click", function (event) {
+                            event.preventDefault()
+                            console.log(miniid);
+                            window.location.assign(`./moreInfo.html?idartist=${miniid}`)
+                        })
+
+                    })
+
+
+                })
+
+
             })
         }
     }
