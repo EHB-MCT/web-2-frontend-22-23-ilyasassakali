@@ -291,7 +291,7 @@ window.onload = function () {
         } else if (artistID) {
             //fetch moreinfo about albums
             DZ.api(`/artist/${artistID}`, function (response) {
-                //console.log("fetch:", response);
+                console.log("fetch:", response);
 
                 let htmlString = "";
 
@@ -300,6 +300,7 @@ window.onload = function () {
                 const type = response.type
                 const numberFans = response.nb_fan
                 const numberAlbums = response.nb_album
+                const radio = response.radio
 
                 //console.log(coverImage);
 
@@ -315,6 +316,7 @@ window.onload = function () {
              <p>Type: ${type}</p>
              <p>Number of Fans: ${numberFans}</p>
              <p>Number of Releases: ${numberAlbums}</p>
+             <p>Radio: ${radio}</p>
              </div> 
               </div>
            </div>
@@ -350,7 +352,7 @@ window.onload = function () {
                         const artistElement = document.getElementById(miniid)
                         artistElement.addEventListener("click", function (event) {
                             event.preventDefault()
-                            console.log(miniid);
+                            //console.log(miniid);
                             window.location.assign(`./moreInfo.html?idartist=${miniid}`)
                         })
 
