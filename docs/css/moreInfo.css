@@ -19,8 +19,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 230vh;
-
+    height: 550vh;
 }
 
 .headNavs {
@@ -515,15 +514,10 @@ label+input[type=radio]+label {
 }
 
 
-
-
-
-
 @media(min-width: 1500px) {
     body {
-
-
-        height: 200vh;
-
+        height: 400vh;
     }
+
+
 }

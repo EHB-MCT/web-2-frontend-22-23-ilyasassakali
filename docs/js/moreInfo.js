@@ -148,7 +148,7 @@ window.onload = function () {
                             </div>
                         </div>`
 
-                        //document.getElementById("topArtistadd").innerHTML = htmlString;
+
                         container.insertAdjacentHTML("beforeend", htmlString);
                         document.getElementById("topArtist").innerHTML = htmlString2;
 
@@ -171,7 +171,7 @@ window.onload = function () {
         } else if (albumID) {
             //fetch moreinfo about albums
             DZ.api(`/album/${albumID}`, function (response) {
-                // console.log("fetch:", response);
+                //console.log("fetch:", response);
 
                 let htmlString = "";
 
@@ -182,7 +182,6 @@ window.onload = function () {
                 const type = response.type
                 const date = response.release_date
                 const numberTracks = response.nb_tracks
-
 
                 let duration = response.duration
                 //https://bobbyhadz.com/blog/javascript-convert-seconds-to-minutes-and-seconds
@@ -220,6 +219,74 @@ window.onload = function () {
                  </div>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
+
+                //show the tracks of the album
+
+                response.tracks.data.forEach(function (track, index) {
+                    let htmlString3 = "";
+                    //const coverImage = track.response.cover_big
+
+                    const minicoverImage = track.album.cover_medium
+                    const minititle = track.title
+                    const miniid = track.id
+                    const position = index + 1
+                    const miniduration = track.duration
+
+                    //https://bobbyhadz.com/blog/javascript-convert-seconds-to-minutes-and-seconds
+                    const minutes = Math.floor(miniduration / 60);
+                    const seconds = miniduration % 60;
+
+                    function padTo2Digits(num) {
+                        return num.toString().padStart(2, '0');
+                    }
+                    const durationmin = `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
+
+                    htmlString3 += ` 
+                    <div id=${miniid}  class="trackContaineradd">
+                    <div class="subtop">
+                        <img src="${minicoverImage}">
+                        <div class="blocktitle">
+                             <p>${minititle}</p>
+                        </div>
+                    </div>
+                    <div class="subtext">
+                        <p>${position}</p>
+                        <p>${durationmin}</p>
+                    </div>
+                    </div>`
+
+                    console.log(miniid);
+                    /**/
+                    let container = document.getElementById("topArtistadd");
+
+                    let htmlString2 = "";
+
+                    htmlString2 += `<h2>Tracks of the album</h2>
+                            <div id="trackContainer" class="trackContainer">
+                                <div class="subtop">
+                                    <p>Title</p>
+                                </div>
+                                <div class="subtext">
+                                    <p>#</p>
+                                    <p>Duration</p>
+                                </div>
+                            </div>`
+
+                    document.getElementById("topArtist").innerHTML = htmlString2;
+                    container.insertAdjacentHTML("beforeend", htmlString3);
+                    /**/
+                    //redirect you to moreinfopage  
+                    const hitElement = document.getElementById(miniid)
+                    hitElement.addEventListener("click", function (event) {
+                        event.preventDefault()
+                        console.log(miniid);
+                        window.location.assign(`./moreInfo.html?idtrack=${miniid}`)
+                    })
+
+                })
+
+
+
             })
         } else if (artistID) {
             //fetch moreinfo about albums
@@ -247,7 +314,7 @@ window.onload = function () {
              <div class="textsection">
              <p>Type: ${type}</p>
              <p>Number of Fans: ${numberFans}</p>
-             <p>Number of Albums: ${numberAlbums}</p>
+             <p>Number of Releases: ${numberAlbums}</p>
              </div> 
               </div>
            </div>
