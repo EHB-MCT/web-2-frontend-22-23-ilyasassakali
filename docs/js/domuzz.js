@@ -39,15 +39,15 @@ window.onload = function () {
                 }
                 const durationmin = `${padTo2Digits(minutes)}min ${padTo2Digits(seconds)}sec`;
 
-                htmlString += `<div class="elementContainer">
+                htmlString += `<div id="elementContainer" class="elementContainer">
                         <div >
-                         <img class="bigimg" src="${coverImage}" alt="">
+                         <img id="bigimg" class="bigimg" src="${coverImage}" alt="">
                          </div>
-                     <div class='bigtitle'>
+                     <div id="bigtitle" class='bigtitle'>
                          <h2>${title}</h2> 
                          <div class="artsec">
                          <a href="" ><img class="smallimg" src="${artist}" alt=""></a>
-                         <p class="artp">${artistname}</p>      
+                         <p id="artp" class="artp">${artistname}</p>      
                      </div>
                      <div class="textsection">
                      <p>Type: ${type}</p>
@@ -62,12 +62,80 @@ window.onload = function () {
                     <textarea class="w3review" id="w3review"  rows="4"
                         cols="50">Write here.</textarea>
                     <h3>A score out of 100</h3>
-                    <input class="w3review2" type="number" max="100" min="0">
+                    <input id="w3review2" class="w3review2" type="number" max="100" min="0">
                     <br>
-                    <input class="moreinfobtn" type="submit" value="SAVE">
+                    <input id="moreinfobtn" class="moreinfobtn" type="submit" value="SAVE">
                 </form>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
+
+                //save muzzy and redirect to all muzzypage
+                const savebtn = document.getElementById('moreinfobtn')
+                savebtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    //console.log("ta cliquez");
+
+                    let muzzy = {}
+                    muzzy.muzzyimg = document.getElementById('bigimg').src;
+                    muzzy.muzzytrack = document.getElementById('bigtitle').firstElementChild.innerHTML;
+                    muzzy.muzzyartist = document.getElementById('artp').innerHTML;
+                    muzzy.opinion = document.getElementById('w3review').value;
+                    muzzy.score = document.getElementById('w3review2').value;
+                    //console.log("wevh:", muzzy.muzzyartist);
+
+                    if (muzzy.opinion && muzzy.score) {
+                        //save the muzzy
+                        getData("http://localhost:3000/savemuzzy", "POST", muzzy).then(data => {
+
+                            console.log("c ca fd", sessionStorage.muzzy);
+                            alert(data.message)
+                            getData("http://localhost:3000/showsavedmuzzys", "POST", muzzy).then(result => {
+                                sessionStorage.setItem('muzzy', JSON.stringify(result.data))
+                                //console.log("c ca fd", sessionStorage.user);
+                                alert(result.message)
+
+                                //window.location.href = `./muzzy.html`
+
+                            })
+                        })
+                    } else {
+                        alert("Some fields are missing: opinion, score")
+
+                    }
+                })
+
+                async function getData(url, method, data) {
+                    let resp = await fetch(url, {
+                        method: method,
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    return await resp.json();
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             })
         } else if (albumID) {
             //fetch moreinfo about albums
@@ -121,7 +189,7 @@ window.onload = function () {
                     <h3>A score out of 100</h3>
                     <input class="w3review2" type="number" max="100" min="0">
                     <br>
-                    <input class="moreinfobtn" type="submit" value="SAVE">
+                    <input id="moreinfobtn" class="moreinfobtn" type="submit" value="SAVE">
                 </form>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
@@ -167,7 +235,7 @@ window.onload = function () {
                     <h3>A score out of 100</h3>
                     <input class="w3review2" type="number" max="100" min="0">
                     <br>
-                    <input class="moreinfobtn" type="submit" value="SAVE">
+                    <input id="moreinfobtn" class="moreinfobtn" type="submit" value="SAVE">
                 </form>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
@@ -176,4 +244,6 @@ window.onload = function () {
             })
         }
     }
+
+
 }

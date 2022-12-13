@@ -19,12 +19,12 @@ document.getElementById('loginform').addEventListener("submit", event => {
         //check for login
         getData("http://localhost:3000/login", "POST", user).then(result => {
             sessionStorage.setItem('user', JSON.stringify(result.data))
-            console.log("c ca fd", sessionStorage.user);
+            //console.log("c ca fd", sessionStorage.user);
             alert(result.message)
             if (sessionStorage.user != 'undefined') {
                 window.location.href = `./home.html`
             }
-
+ 
         })
     } else {
         alert("Some fields are missing: email, password")
