@@ -220,31 +220,6 @@ window.onload = function () {
 
                     }
                 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             })
         } else if (artistID) {
             //fetch moreinfo about albums
@@ -264,10 +239,10 @@ window.onload = function () {
 
                 htmlString += ` <div class="elementContainer">
                 <div >
-                 <img class="bigimg" src="${coverImage}" alt="">
+                 <img id="bigimg" class="bigimg" src="${coverImage}" alt="">
                  </div>
              <div class='bigtitle2'>
-             <h2>${artistname}</h2>  
+             <h2 id="artp">${artistname}</h2>  
                  <div class="artsec"> 
              </div>
              <div class="textsection">
@@ -283,13 +258,56 @@ window.onload = function () {
                     <textarea class="w3review" id="w3review"  rows="4"
                         cols="50">Write here.</textarea>
                     <h3>A score out of 100</h3>
-                    <input class="w3review2" type="number" max="100" min="0">
+                    <input id="w3review2" class="w3review2" type="number" max="100" min="0">
                     <br>
                     <input id="moreinfobtn" class="moreinfobtn" type="submit" value="PUBLISH">
                 </form>`
 
                 document.getElementById("showContainer").innerHTML = htmlString;
 
+                //save artist as muzzy and redirect to all muzzypage
+                const savebtn = document.getElementById('moreinfobtn')
+                savebtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    console.log("ta cliquez");
+
+                    //https://tecadmin.net/get-current-date-time-javascript/
+                    let today = new Date();
+                    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                    let time = today.getHours() + ":" + today.getMinutes();
+
+                    let user = JSON.parse(sessionStorage.getItem('user'))
+                    let muzzy = {}
+                    muzzy.muzzyimg = document.getElementById('bigimg').src;
+                    muzzy.muzzyartist = document.getElementById('artp').innerHTML;
+                    muzzy.opinion = document.getElementById('w3review').value;
+                    muzzy.score = document.getElementById('w3review2').value;
+                    muzzy.username = user.username
+                    muzzy.date = date
+                    muzzy.time = time
+
+                    //console.log("go", muzzy.username);
+                    if (muzzy.opinion && muzzy.score) {
+                        //add  muzzy in db
+                        getData("http://localhost:3000/saveartistmuzzy", "POST", muzzy).then(data => {
+                            alert(data.message)
+                            window.location.href = `./muzzy.html`
+                        })
+                        async function getData(url, method, data) {
+                            let resp = await fetch(url, {
+                                method: method,
+                                headers: {
+                                    'Content-Type': "application/json"
+                                },
+                                body: JSON.stringify(data)
+                            });
+                            return await resp.json();
+                        }
+                    } else {
+                        alert("Some fields are missing: opinion, score")
+
+                    }
+                })
 
             })
         }
