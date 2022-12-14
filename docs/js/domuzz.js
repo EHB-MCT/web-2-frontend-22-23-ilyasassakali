@@ -75,19 +75,33 @@ window.onload = function () {
                     event.preventDefault();
                     //console.log("ta cliquez");
 
+                    //https://tecadmin.net/get-current-date-time-javascript/
+                    let today = new Date();
+                    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                    let time = today.getHours() + ":" + today.getMinutes();
+
+
+
+                    let user = JSON.parse(sessionStorage.getItem('user'))
                     let muzzy = {}
                     muzzy.muzzyimg = document.getElementById('bigimg').src;
                     muzzy.muzzytrack = document.getElementById('bigtitle').firstElementChild.innerHTML;
                     muzzy.muzzyartist = document.getElementById('artp').innerHTML;
                     muzzy.opinion = document.getElementById('w3review').value;
                     muzzy.score = document.getElementById('w3review2').value;
-                    //console.log("wevh:", muzzy.muzzyartist);
+                    muzzy.username = user.username
+                    muzzy.date = date
+                    muzzy.time = time
+
+                    //muzzy.username = user.username
+                    console.log("kaka", muzzy.username);
+
 
                     if (muzzy.opinion && muzzy.score) {
                         //add  muzzy in db
                         getData("http://localhost:3000/savemuzzy", "POST", muzzy).then(data => {
                             alert(data.message)
-                            refreshmuzzypage()
+                            //window.location.href = `./muzzy.html`
                         })
                         async function getData(url, method, data) {
                             let resp = await fetch(url, {
@@ -99,14 +113,12 @@ window.onload = function () {
                             });
                             return await resp.json();
                         }
-
-                        
                     } else {
                         alert("Some fields are missing: opinion, score")
 
                     }
                 })
-                //window.location.href = `./muzzy.html`
+
 
 
 

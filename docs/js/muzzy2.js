@@ -18,13 +18,13 @@ window.onload = function () {
                                    <img id="inimg" src="${data[r].muzzyimg}">
                                </div>
                                <div class="text">
-                                   <p id="inp3">Track: ${data[r].muzzytrack}</p>
-                                   <p id="inp4">Artist: ${data[r].muzzyartist}</p>
-                                   <p id="inp">Opinion: ${data[r].opinion}</p>
-                                   <p id="inp2">Score: ${data[r].score}/100</p>
-                                    </div>
+                                   <h3 class="inp3" id="inp3">Track: ${data[r].muzzytrack} - Artist: ${data[r].muzzyartist}</h3>
+                                   <p class="inp4" id="inp4">Opinion: ${data[r].opinion}</p>
+                                   <p class="inp2" id="inp2">Score: ${data[r].score}/100</p>
+                               </div>
                                <div class="addedbby">
-                               <p id="inp5">added by: saylipokemongo</p>
+                                   <p id="inp5">added by:<br> ${data[r].username}</p>
+                                   <p id="inp5">added date:<br> ${data[r].date}<br> ${data[r].time}</p>
                                </div>
                            </div>
                                    `

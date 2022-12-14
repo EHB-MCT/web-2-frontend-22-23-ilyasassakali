@@ -239,11 +239,21 @@ body {
 
 }
 
-.addedbby{
+.addedbby {
     display: flex;
-    align-items: center;
+    text-align: left;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 20%;
+    border-left: 1px solid white;
 }
 
+.addedbby p {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 
 .elbtns {
     width: 20%;
@@ -273,7 +283,7 @@ body {
     opacity: 50%;
 }
 
-.loadgif img{
+.loadgif img {
     width: 100px;
 }
 
@@ -298,6 +308,16 @@ body {
 }
 
 
+.inp2 {
+
+    font-style: italic;
+
+}
+
+.inp4 {
+
+    font-style: italic;
+}
 
 
 
@@ -475,5 +495,10 @@ label+input[type=radio]+label {
 
     .text p {
         font-size: 15px;
+    }
+
+    .addedbby p {
+        font-size: 15px;
+
     }
 }
