@@ -44,7 +44,7 @@ window.onload = function () {
     //fetch today big albums
     function fetchBigAlbums() {
         DZ.api('/chart/0/albums', function (response) {
-            console.log("fetch:", response.data);
+            //console.log("fetch:", response.data);
 
             response.data.forEach(item => {
                 ////console.log("here are your item: ", item);

@@ -84,36 +84,30 @@ window.onload = function () {
                     //console.log("wevh:", muzzy.muzzyartist);
 
                     if (muzzy.opinion && muzzy.score) {
-                        //save the muzzy
+                        //add  muzzy in db
                         getData("http://localhost:3000/savemuzzy", "POST", muzzy).then(data => {
-
-                            console.log("c ca fd", sessionStorage.muzzy);
                             alert(data.message)
-                            getData("http://localhost:3000/showsavedmuzzys", "POST", muzzy).then(result => {
-                                sessionStorage.setItem('muzzy', JSON.stringify(result.data))
-                                //console.log("c ca fd", sessionStorage.user);
-                                alert(result.message)
-
-                                //window.location.href = `./muzzy.html`
-
-                            })
+                            refreshmuzzypage()
                         })
+                        async function getData(url, method, data) {
+                            let resp = await fetch(url, {
+                                method: method,
+                                headers: {
+                                    'Content-Type': "application/json"
+                                },
+                                body: JSON.stringify(data)
+                            });
+                            return await resp.json();
+                        }
+
+                        
                     } else {
                         alert("Some fields are missing: opinion, score")
 
                     }
                 })
+                //window.location.href = `./muzzy.html`
 
-                async function getData(url, method, data) {
-                    let resp = await fetch(url, {
-                        method: method,
-                        headers: {
-                            'Content-Type': "application/json"
-                        },
-                        body: JSON.stringify(data)
-                    });
-                    return await resp.json();
-                }
 
 
 

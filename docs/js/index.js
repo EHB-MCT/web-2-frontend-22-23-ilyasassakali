@@ -24,7 +24,7 @@ document.getElementById('loginform').addEventListener("submit", event => {
             if (sessionStorage.user != 'undefined') {
                 window.location.href = `./home.html`
             }
- 
+
         })
     } else {
         alert("Some fields are missing: email, password")
