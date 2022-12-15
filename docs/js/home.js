@@ -31,7 +31,7 @@ window.onload = function () {
 
                 container.insertAdjacentHTML("beforeend", htmlString);
 
-                //redirect you to moreinfopage  
+                //redirect you to about page  
                 const hitElement = document.getElementById(id)
                 hitElement.addEventListener("click", function (event) {
                     event.preventDefault()
@@ -66,7 +66,7 @@ window.onload = function () {
 
                 container.insertAdjacentHTML("beforeend", htmlString);
 
-                //redirect you to moreinfopage 
+                //redirect you to aboutpage 
                 const albumElement = document.getElementById(id);
                 albumElement.addEventListener("click", (event) => {
                     event.preventDefault()
@@ -99,7 +99,7 @@ window.onload = function () {
 
                 container.insertAdjacentHTML("beforeend", htmlString);
 
-                //redirect you to moreinfopage 
+                //redirect you to aboutpage 
                 const artistElement = document.getElementById(id)
                 artistElement.addEventListener("click", function (event) {
                     event.preventDefault()

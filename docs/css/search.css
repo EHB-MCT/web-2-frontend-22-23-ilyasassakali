@@ -129,6 +129,10 @@ body {
 
 }
 
+.showresult {
+    margin-left: 1%;
+}
+
 .songPage .todaysHits .moreContainer a {
     text-decoration: none;
     color: white;
@@ -150,7 +154,9 @@ body {
 .songPage .todaysHits .showContainer {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+
+
     flex-flow: row wrap;
     background-color: #181e28;
 }
@@ -159,8 +165,7 @@ body {
     width: 18%;
     background-color: #181e28;
     margin-bottom: 20px;
-
-
+    margin-inline: 1.0004%;
 }
 
 .todaysHits .showContainer .elementContainer img {

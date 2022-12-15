@@ -3,8 +3,6 @@ window.onload = function () {
 
     refreshmuzzytracks()
 
-
-
     //does a get for having the last muzzy tracks on the page
     async function refreshmuzzytracks() {
 
@@ -16,11 +14,11 @@ window.onload = function () {
             for (let r = data.length - 1; r >= 0; r--) {
 
                 htmlString += `
-                           <div class="muzzinner">
-                               <div class="inimg" id="inimg" >
+                           <div id="muzzinner"  class="muzzinner">
+                               <div  class="inimg" id="inimg" >
                                    <img id="inimg" src="${data[r].muzzyimg}">
                                </div>
-                               <div class="text">
+                               <div id="${data[r].idtrack}" class="text">
                                    <h3 class="inp3" id="inp3">Track: ${data[r].muzzytrack} - Artist: ${data[r].muzzyartist}</h3>
                                    <p class="inp4" id="inp4">Opinion: ${data[r].opinion}</p>
                                    <p class="inp2" id="inp2">Score: ${data[r].score}/100</p>
@@ -31,10 +29,11 @@ window.onload = function () {
                                </div>
                            </div>
                                    `
-            }
 
-            console.log("ca c ton string:", htmlString);
+
+            }
             document.getElementById("muzzelement").innerHTML = htmlString;
+
 
         })
         async function getData(url, method) {
@@ -55,7 +54,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllalbumMuzzys", "GET", muzzy).then(data => {
-            console.log("conva data:", data);
+            //console.log("conva data:", data);
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -65,7 +64,7 @@ window.onload = function () {
                                <div class="inimg" id="inimg" >
                                    <img id="inimg" src="${data[r].muzzyimg}">
                                </div>
-                               <div class="text">
+                               <div  id="${data[r].idalbum}" class="text">
                                    <h3 class="inp3" id="inp3">Album: ${data[r].muzzyalbum} - Artist: ${data[r].muzzyartist}</h3>
                                    <p class="inp4" id="inp4">Opinion: ${data[r].opinion}</p>
                                    <p class="inp2" id="inp2">Score: ${data[r].score}/100</p>
@@ -78,7 +77,7 @@ window.onload = function () {
                                    `
             }
 
-            console.log("ca c ton string:", htmlString);
+            // console.log("ca c ton string:", htmlString);
             document.getElementById("muzzelement2").innerHTML = htmlString;
 
         })
@@ -99,17 +98,17 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllartistMuzzys", "GET", muzzy).then(data => {
-            console.log("conva data:", data);
+            //console.log("conva data:", data);
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
 
-                htmlString += `
-                           <div class="muzzinner">
+                htmlString += ` 
+                           <div  class="muzzinner">
                                <div class="inimg" id="inimg" >
                                    <img id="inimg" src="${data[r].muzzyimg}">
                                </div>
-                               <div class="text">
+                               <div id="${data[r].idartist}" class="text">
                                    <h3 class="inp3" id="inp3">Artist: ${data[r].muzzyartist}</h3>
                                    <p class="inp4" id="inp4">Opinion: ${data[r].opinion}</p>
                                    <p class="inp2" id="inp2">Score: ${data[r].score}/100</p>
@@ -122,7 +121,7 @@ window.onload = function () {
                                    `
             }
 
-            console.log("ca c ton string:", htmlString);
+            //console.log("ca c ton string:", htmlString);
             document.getElementById("muzzelement3").innerHTML = htmlString;
 
         })

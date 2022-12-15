@@ -88,14 +88,15 @@ window.onload = function () {
                     muzzy.muzzytrack = document.getElementById('bigtitle').firstElementChild.innerHTML;
                     muzzy.muzzyartist = document.getElementById('artp').innerHTML;
                     muzzy.opinion = document.getElementById('w3review').value;
-                    muzzy.score = document.getElementById('w3review2').value;
+                    muzzy.score = Number(document.getElementById('w3review2').value)
                     muzzy.username = user.username
                     muzzy.date = date
                     muzzy.time = time
+                    muzzy.idtrack = trackID
 
-                    //muzzy.username = user.username
-                    //console.log("kaka", muzzy.username);
-                    if (muzzy.opinion && muzzy.score) {
+                    //console.log("kaka", muzzy.idtrack);
+
+                    if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/savemuzzy", "POST", muzzy).then(data => {
                             alert(data.message)
@@ -111,8 +112,10 @@ window.onload = function () {
                             });
                             return await resp.json();
                         }
+                    } else if (muzzy.score > 100 || muzzy.score < 0) {
+                        alert("the score must be between 0 and 100!")
                     } else {
-                        alert("Some fields are missing: opinion, score")
+                        alert("Some fields are missing: opinion, score!")
                     }
                 })
             })
@@ -190,16 +193,14 @@ window.onload = function () {
                     muzzy.muzzyalbum = document.getElementById('bigtitle').firstElementChild.innerHTML;
                     muzzy.muzzyartist = document.getElementById('artp').innerHTML;
                     muzzy.opinion = document.getElementById('w3review').value;
-                    muzzy.score = document.getElementById('w3review2').value;
+                    muzzy.score = Number(document.getElementById('w3review2').value)
                     muzzy.username = user.username
                     muzzy.date = date
                     muzzy.time = time
-
+                    muzzy.idalbum = albumID
 
                     //console.log("go", muzzy.username);
-
-
-                    if (muzzy.opinion && muzzy.score) {
+                    if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/savealbummuzzy", "POST", muzzy).then(data => {
                             alert(data.message)
@@ -215,6 +216,8 @@ window.onload = function () {
                             });
                             return await resp.json();
                         }
+                    } else if (muzzy.score > 100 || muzzy.score < 0) {
+                        alert("the score must be between 0 and 100!")
                     } else {
                         alert("Some fields are missing: opinion, score")
 
@@ -281,13 +284,14 @@ window.onload = function () {
                     muzzy.muzzyimg = document.getElementById('bigimg').src;
                     muzzy.muzzyartist = document.getElementById('artp').innerHTML;
                     muzzy.opinion = document.getElementById('w3review').value;
-                    muzzy.score = document.getElementById('w3review2').value;
+                    muzzy.score = Number(document.getElementById('w3review2').value)
                     muzzy.username = user.username
                     muzzy.date = date
                     muzzy.time = time
+                    muzzy.idartist = artistID
 
                     //console.log("go", muzzy.username);
-                    if (muzzy.opinion && muzzy.score) {
+                    if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/saveartistmuzzy", "POST", muzzy).then(data => {
                             alert(data.message)
@@ -303,15 +307,13 @@ window.onload = function () {
                             });
                             return await resp.json();
                         }
+                    } else if (muzzy.score > 100 || muzzy.score < 0) {
+                        alert("the score must be between 0 and 100!")
                     } else {
                         alert("Some fields are missing: opinion, score")
-
                     }
                 })
-
             })
         }
     }
-
-
 }

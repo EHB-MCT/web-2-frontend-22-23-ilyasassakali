@@ -215,10 +215,15 @@ body {
 .muzzinner {
     width: 100%;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     background-color: #111723;
     border-radius: 20px;
     padding: 15px;
+}
+
+.muzzinner:hover {
+    box-shadow: 0px 0px 8px #ff69fa;
+    cursor: pointer;
 }
 
 

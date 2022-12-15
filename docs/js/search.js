@@ -1,7 +1,7 @@
 "use strict"
 
 window.onload = function () {
- 
+
     searchOnName();
 
     function searchOnName() {
@@ -18,7 +18,6 @@ window.onload = function () {
                 document.getElementById("srch").click();
             }
         })
-
         //search by clicking searchbutton
         searchclick.addEventListener('click', function (event) {
             let searchword = searched.value.toLowerCase()
@@ -29,23 +28,18 @@ window.onload = function () {
 
                 //console.log("le premier");
                 DZ.api(`/search/track?q=${searchword}`, function (response) {
-
-
-                    //console.log("la longueur de ton fetch: ", response.total);
-
+                    //console.log("la longueur de ton fetch: ", response.total); 
                     //triggers other function for displaying the result
                     if (response.total == 0 || response.total == undefined) {
                         showNoResult(searchword);
                     } else {
                         showResult(searchword)
                     }
-
-
                     //console.log("search on: ", searchword);
                     //console.log("fetch:", response.data);
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
-                        //console.log("here are your items: ", item);
+                        //console.log("here are your items: ", item); 
                         const coverImage = item.album.cover_medium
                         const title = item.title
                         const artist = item.artist.name
@@ -58,10 +52,6 @@ window.onload = function () {
                         </div>`
 
                         document.getElementById("showContainer").innerHTML = htmlString;
-
-
-
-
                         //redirect you to moreinfopage 
                         const tracks = document.getElementsByClassName("elementContainer")
                         const trackArray = Array.from(tracks)
@@ -71,16 +61,11 @@ window.onload = function () {
                             const trackID = track.id
                             window.location.href = `./moreInfo.html?idtrack=${trackID}`;
                         }))
-
-
-
                     });
                 })
             } else if (document.getElementById('alb').checked) {
                 //search album
                 //console.log("le deuxieme");
-
-
                 DZ.api(`/search/album?q=${searchword}`, function (response) {
 
                     //console.log("fetch:", response.data);
@@ -90,8 +75,6 @@ window.onload = function () {
                     } else {
                         showResult(searchword)
                     }
-
-
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
                         //console.log("here are your items: ", item);
@@ -117,13 +100,8 @@ window.onload = function () {
                             console.log(albumID);
                             window.location.href = `./moreInfo.html?idalbum=${albumID}`;
                         }))
-
-
-
                     });
                 })
-
-
             } else if (document.getElementById('art').checked) {
                 //search artist
                 //console.log("troisieme");
@@ -136,8 +114,6 @@ window.onload = function () {
                     } else {
                         showResult(searchword)
                     }
-
- 
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
                         //console.log("here are your items: ", item);
@@ -175,43 +151,43 @@ window.onload = function () {
         if (document.getElementById('tra').checked) {
             console.log("there is nothing for:", searchword);
             let htmlString = "";
-            htmlString += `<h2 id="showresult">No Tracks found for " ${searchword} "</h2>`
+            htmlString += `<h2 style="margin-left:1%" id="showresult">No Tracks found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
             let htmlString2 = "";
             document.getElementById("showContainer").innerHTML = htmlString2;
         } else if (document.getElementById('alb').checked) {
             console.log("there is nothing for:", searchword);
             let htmlString = "";
-            htmlString += `<h2 id="showresult">No Albums found for " ${searchword} "</h2>`
+            htmlString += `<h2 style="margin-left:1%"  id="showresult">No Albums found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
             let htmlString2 = "";
             document.getElementById("showContainer").innerHTML = htmlString2;
         } else if (document.getElementById('art').checked) {
             console.log("there is nothing for:", searchword);
             let htmlString = "";
-            htmlString += `<h2 id="showresult">No Artists found for " ${searchword} "</h2>`
+            htmlString += `<h2 style="margin-left:1%"  id="showresult">No Artists found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
             let htmlString2 = "";
             document.getElementById("showContainer").innerHTML = htmlString2;
         }
-
+ 
     }
 
     //triggered when result found and displays result found for chosen criterias
     function showResult(searchword) {
         if (document.getElementById('tra').checked) {
             let htmlString = "";
-            htmlString += `<h2 id="showresult">Tracks found for " ${searchword} "</h2>`
+            htmlString += `<h2 style="margin-left:1%"  id="showresult">Tracks found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
         } else if (document.getElementById('alb').checked) {
             console.log("there is nothing for:", searchword);
             let htmlString = "";
-            htmlString += `<h2 id="showresult">Albums found for " ${searchword} "</h2>`
+            htmlString += `<h2 style="margin-left:1%"  id="showresult">Albums found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
         } else if (document.getElementById('art').checked) {
             console.log("there is nothing for:", searchword);
             let htmlString = "";
-            htmlString += `<h2 id="showresult">Artists found for " ${searchword} "</h2>`
+            htmlString += `<h2 style="margin-left:1%"  id="showresult">Artists found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
         }
     }
