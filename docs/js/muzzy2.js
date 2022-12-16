@@ -11,7 +11,7 @@ window.onload = function () {
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllMuzzys", "GET", muzzy).then(data => {
             //console.log("conva data:", data);
-           
+
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
