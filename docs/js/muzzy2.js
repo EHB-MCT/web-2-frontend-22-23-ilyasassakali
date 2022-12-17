@@ -17,7 +17,7 @@ window.onload = function () {
             for (let r = data.length - 1; r >= 0; r--) {
 
                 htmlString += `
-                                   <div id="muzzinner"  class="muzzinner">
+                                   <div id="muzzinner-${r}"  class="muzzinner">
                                        <div  class="inimg" id="inimg" >
                                            <img id="inimg" src="${data[r].muzzyimg}">
                                        </div>
@@ -33,9 +33,18 @@ window.onload = function () {
                                    </div>
                                            `
 
-
             }
+
             document.getElementById("muzzelement").innerHTML = htmlString;
+
+            //redirect you to about page of clicked muzzy
+            for (let r = data.length - 1; r >= 0; r--) {
+                document.getElementById(`muzzinner-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const trackID = data[r].idtrack
+                    window.location.href = `./moreInfo.html?idtrack=${trackID}`;
+                })
+            }
         })
         async function getData(url, method) {
             let resp = await fetch(url, {
@@ -47,7 +56,6 @@ window.onload = function () {
             return await resp.json();
         }
         refreshmuzzyalbums()
-
     }
 
     //does a get for having the last muzzy albums on the page
@@ -61,7 +69,7 @@ window.onload = function () {
             for (let r = data.length - 1; r >= 0; r--) {
 
                 htmlString += `
-                           <div class="muzzinner">
+                           <div id="muzzinner2-${r}" class="muzzinner">
                                <div class="inimg" id="inimg" >
                                    <img id="inimg" src="${data[r].muzzyimg}">
                                </div>
@@ -80,6 +88,15 @@ window.onload = function () {
 
             // console.log("ca c ton string:", htmlString);
             document.getElementById("muzzelement2").innerHTML = htmlString;
+
+            //redirect you to about page of clicked muzzy
+            for (let r = data.length - 1; r >= 0; r--) {
+                document.getElementById(`muzzinner2-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const albumID = data[r].idalbum
+                    window.location.href = `./moreInfo.html?idalbum=${albumID}`;
+                })
+            }
 
         })
         async function getData(url, method) {
@@ -105,7 +122,7 @@ window.onload = function () {
             for (let r = data.length - 1; r >= 0; r--) {
 
                 htmlString += ` 
-                           <div  class="muzzinner">
+                           <div id="muzzinner3-${r}"  class="muzzinner">
                                <div class="inimg" id="inimg" >
                                    <img id="inimg" src="${data[r].muzzyimg}">
                                </div>
@@ -124,6 +141,15 @@ window.onload = function () {
 
             //console.log("ca c ton string:", htmlString);
             document.getElementById("muzzelement3").innerHTML = htmlString;
+
+            //redirect you to about page of clicked muzzy
+            for (let r = data.length - 1; r >= 0; r--) {
+                document.getElementById(`muzzinner3-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const artistID = data[r].idartist
+                    window.location.href = `./moreInfo.html?idartist=${artistID}`;
+                })
+            }
 
         })
         async function getData(url, method) {

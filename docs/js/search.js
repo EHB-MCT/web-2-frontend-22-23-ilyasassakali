@@ -52,7 +52,7 @@ window.onload = function () {
                         </div>`
 
                         document.getElementById("showContainer").innerHTML = htmlString;
-                        //redirect you to moreinfopage 
+                        //redirect you to about page 
                         const tracks = document.getElementsByClassName("elementContainer")
                         const trackArray = Array.from(tracks)
                         console.log(trackArray);
