@@ -3,7 +3,7 @@
 /*const { result } = require("lodash");*/
 
 /*
-const {
+const { 
     method
 } = require("lodash");*/
 
@@ -22,7 +22,7 @@ document.getElementById('loginform').addEventListener("submit", event => {
             //console.log("c ca fd", sessionStorage.user);
             alert(result.message)
             if (sessionStorage.user != 'undefined') {
-                window.location.href = `./home.html`
+                window.location.href = `./html/home.html`
             }
 
         })

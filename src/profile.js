@@ -145,7 +145,7 @@ window.onload = function () {
             getData(`http://localhost:3000/${uuiduser}`, "DELETE", user).then(data => {
                 alert("Account deleted succesfully, you will be redirected to the sign in page.")
                 sessionStorage.clear()
-                window.location.href = "./index.html"
+                window.location.href = "../index.html"
             })
 
             async function getData(url, method) {
@@ -179,7 +179,7 @@ window.onload = function () {
                 console.log("click");
                 //https://www.w3schools.com/jsref/met_storage_clear.asp
                 sessionStorage.clear()
-                window.location.href = "./index.html"
+                window.location.href = "../index.html"
             }
 
         )
