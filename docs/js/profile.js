@@ -5,7 +5,7 @@ window.onload = function () {
     showUserData()
 
 
-    async function showUserData() {
+    async function showUserData() { 
         let user = JSON.parse(sessionStorage.getItem('user'))
         let uuiduser = user.uuid
 

@@ -99,8 +99,8 @@ window.onload = function () {
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/savemuzzy", "POST", muzzy).then(data => {
-                            alert(data.message)
-                            window.location.href = `./muzzy.html`
+                            //alert(data.message)
+                            postinmymuzzy()
                         })
                         async function getData(url, method, data) {
                             let resp = await fetch(url, {
@@ -203,8 +203,9 @@ window.onload = function () {
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/savealbummuzzy", "POST", muzzy).then(data => {
-                            alert(data.message)
-                            window.location.href = `./muzzy.html`
+                            //alert(data.message)
+                            postinmymuzzy()
+
                         })
                         async function getData(url, method, data) {
                             let resp = await fetch(url, {
@@ -294,8 +295,9 @@ window.onload = function () {
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/saveartistmuzzy", "POST", muzzy).then(data => {
-                            alert(data.message)
-                            window.location.href = `./muzzy.html`
+                            //alert(data.message)
+                            postinmymuzzy()
+
                         })
                         async function getData(url, method, data) {
                             let resp = await fetch(url, {
@@ -314,6 +316,29 @@ window.onload = function () {
                     }
                 })
             })
+        }
+
+        //does a post for having mymuzzys that you've published in your usermuzzy array
+        async function postinmymuzzy() {
+
+            let user = sessionStorage.getItem("user");
+
+            await getData("http://localhost:3000/savemyMuzzys", "POST", user).then(data => {
+                console.log("conva datamymuzzy:", data);
+                alert("Muzzy has been published successfully")
+                window.location.href = `./muzzy.html`
+            })
+            async function getData(url, method, body) {
+                let resp = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body
+
+                });
+                return await resp.json();
+            }
         }
     }
 }

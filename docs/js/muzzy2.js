@@ -4,14 +4,12 @@ window.onload = function () {
     refreshmuzzytracks()
 
 
-
     //does a get for having the last muzzy tracks on the page
     async function refreshmuzzytracks() {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllMuzzys", "GET", muzzy).then(data => {
             //console.log("conva data:", data);
-
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -63,7 +61,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllalbumMuzzys", "GET", muzzy).then(data => {
-            //console.log("conva data:", data);
+            //console.log("conva dataalbum:", data);
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -116,7 +114,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllartistMuzzys", "GET", muzzy).then(data => {
-            //console.log("conva data:", data);
+            //console.log("conva :", data);
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -158,6 +156,174 @@ window.onload = function () {
                 headers: {
                     'Content-Type': "application/json"
                 },
+            });
+            return await resp.json();
+        }
+        refreshMymuzzystracks();
+    }
+
+    //does a get for having mymuzzys that you've published for tracks
+    async function refreshMymuzzystracks() {
+        let user = sessionStorage.getItem("user");
+
+        await getData("http://localhost:3000/allmyMuzzys", "POST", user).then(data => {
+            console.log("conva datamymuzzy:", data.data);
+
+            let htmlString = ""
+            for (let r = data.data.length - 1; r >= 0; r--) {
+
+                htmlString += `
+                                   <div id="muzzinner4-${r}"  class="muzzinner">
+                                       <div  class="inimg" id="inimg" >
+                                           <img id="inimg" src="${data.data[r].muzzyimg}">
+                                       </div>
+                                       <div id="${data.data[r].idtrack}" class="text">
+                                           <h3 class="inp3" id="inp3">Track: ${data.data[r].muzzytrack} - Artist: ${data.data[r].muzzyartist}</h3>
+                                           <p class="inp4" id="inp4">Opinion: ${data.data[r].opinion}</p>
+                                           <p class="inp2" id="inp2">Score: ${data.data[r].score}/100</p>
+                                       </div>
+                                       <div class="addedbby">
+                                           <p id="inp5">added by:<br> ${data.data[r].username}</p>
+                                           <p id="inp5">added date:<br> ${data.data[r].date}<br> ${data.data[r].time}</p>
+                                       </div>
+                                   </div>
+                                           `
+
+            }
+
+            document.getElementById("muzzelement4").innerHTML = htmlString;
+
+            console.log("freroooo", data.data.length);
+            //redirect you to about page of clicked muzzy
+            for (let r = data.data.length - 1; r >= 0; r--) {
+                document.getElementById(`muzzinner4-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const trackID = data.data[r].idtrack
+                    window.location.href = `./moreInfo.html?idtrack=${trackID}`;
+                })
+            }
+
+        })
+        async function getData(url, method, body) {
+            let resp = await fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body
+
+            });
+            return await resp.json();
+        }
+        refreshMymuzzysalbums();
+    }
+
+    //does a get for having mymuzzys that you've published for albums
+    async function refreshMymuzzysalbums() {
+        let user = sessionStorage.getItem("user");
+
+        await getData("http://localhost:3000/allmyMuzzysalbum", "POST", user).then(data => {
+            console.log("conva datamymuzzy:", data.data);
+
+            let htmlString = ""
+            for (let r = data.data.length - 1; r >= 0; r--) {
+
+                htmlString += `
+                                   <div id="muzzinner5-${r}"  class="muzzinner">
+                                       <div  class="inimg" id="inimg" >
+                                           <img id="inimg" src="${data.data[r].muzzyimg}">
+                                       </div>
+                                       <div id="${data.data[r].idalbum}" class="text">
+                                           <h3 class="inp3" id="inp3">Album: ${data.data[r].muzzyalbum} - Artist: ${data.data[r].muzzyartist}</h3>
+                                           <p class="inp4" id="inp4">Opinion: ${data.data[r].opinion}</p>
+                                           <p class="inp2" id="inp2">Score: ${data.data[r].score}/100</p>
+                                       </div>
+                                       <div class="addedbby">
+                                           <p id="inp5">added by:<br> ${data.data[r].username}</p>
+                                           <p id="inp5">added date:<br> ${data.data[r].date}<br> ${data.data[r].time}</p>
+                                       </div>
+                                   </div>
+                                           `
+
+            }
+
+            document.getElementById("muzzelement5").innerHTML = htmlString;
+
+            console.log("freroooo", data.data.length);
+            //redirect you to about page of clicked muzzy
+            for (let r = data.data.length - 1; r >= 0; r--) {
+                document.getElementById(`muzzinner5-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const albumID = data.data[r].idalbum
+                    window.location.href = `./moreInfo.html?idalbum=${albumID}`;
+                })
+            }
+
+        })
+        async function getData(url, method, body) {
+            let resp = await fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body
+
+            });
+            return await resp.json();
+        }
+        refreshMymuzzysartists()
+    }
+
+    //does a get for having mymuzzys that you've published for albums
+    async function refreshMymuzzysartists() {
+        let user = sessionStorage.getItem("user");
+
+        await getData("http://localhost:3000/allmyMuzzysartist", "POST", user).then(data => {
+            console.log("conva datamymuzzy:", data.data);
+
+            let htmlString = ""
+            for (let r = data.data.length - 1; r >= 0; r--) {
+
+                htmlString += `
+                                   <div id="muzzinner6-${r}"  class="muzzinner">
+                                       <div  class="inimg" id="inimg" >
+                                           <img id="inimg" src="${data.data[r].muzzyimg}">
+                                       </div>
+                                       <div id="${data.data[r].idartist}" class="text">
+                                           <h3 class="inp3" id="inp3">Artist: ${data.data[r].muzzyartist}</h3>
+                                           <p class="inp4" id="inp4">Opinion: ${data.data[r].opinion}</p>
+                                           <p class="inp2" id="inp2">Score: ${data.data[r].score}/100</p>
+                                       </div>
+                                       <div class="addedbby">
+                                           <p id="inp5">added by:<br> ${data.data[r].username}</p>
+                                           <p id="inp5">added date:<br> ${data.data[r].date}<br> ${data.data[r].time}</p>
+                                       </div>
+                                   </div>
+                                           `
+
+            }
+
+            document.getElementById("muzzelement6").innerHTML = htmlString;
+
+            console.log("freroooo", data.data.length);
+            //redirect you to about page of clicked muzzy
+            for (let r = data.data.length - 1; r >= 0; r--) {
+                document.getElementById(`muzzinner6-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const artistID = data.data[r].idartist
+                    window.location.href = `./moreInfo.html?idartist=${artistID}`;
+                })
+            }
+
+        })
+        async function getData(url, method, body) {
+            let resp = await fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body
+
             });
             return await resp.json();
         }
