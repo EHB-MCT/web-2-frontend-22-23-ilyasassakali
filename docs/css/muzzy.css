@@ -326,6 +326,23 @@ body {
 
 
 
+.deletemuzzy {
+    text-decoration: underline;
+    margin-bottom: 20px;
+    margin-top: -40px;
+    cursor: pointer;
+    background-color: #111723;
+    width: 18%;
+    border-radius: 100px;
+    font-size: 14px;
+    margin-left: 5px;
+
+}
+
+.deletemuzzy:hover {
+    color: red;
+}
+
 
 
 

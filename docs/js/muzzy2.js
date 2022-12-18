@@ -9,7 +9,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllMuzzys", "GET", muzzy).then(data => {
-            //console.log("conva data:", data);
+            //console.log("premier data:", data);
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -162,12 +162,12 @@ window.onload = function () {
         refreshMymuzzystracks();
     }
 
-    //does a get for having mymuzzys that you've published for tracks
+    //show mymuzzys that you've published with delete a trackmuzzy
     async function refreshMymuzzystracks() {
         let user = sessionStorage.getItem("user");
 
         await getData("http://localhost:3000/allmyMuzzys", "POST", user).then(data => {
-            console.log("conva datamymuzzy:", data.data);
+            console.log("jregards ca:", data.data);
 
             let htmlString = ""
             for (let r = data.data.length - 1; r >= 0; r--) {
@@ -185,21 +185,48 @@ window.onload = function () {
                                        <div class="addedbby">
                                            <p id="inp5">added by:<br> ${data.data[r].username}</p>
                                            <p id="inp5">added date:<br> ${data.data[r].date}<br> ${data.data[r].time}</p>
+                                           
                                        </div>
                                    </div>
+                                   <p class="deletemuzzy" id="deletemuzzytrack-${r}" href="">delete muzzy</p>
                                            `
 
             }
 
             document.getElementById("muzzelement4").innerHTML = htmlString;
 
-            console.log("freroooo", data.data.length);
             //redirect you to about page of clicked muzzy
             for (let r = data.data.length - 1; r >= 0; r--) {
                 document.getElementById(`muzzinner4-${r}`).addEventListener("click", (event) => {
                     event.preventDefault()
                     const trackID = data.data[r].idtrack
                     window.location.href = `./moreInfo.html?idtrack=${trackID}`;
+                })
+            }
+
+            console.log("freroooo", data.data.length);
+            //delete a muzzy track
+            for (let r = data.data.length - 1; r >= 0; r--) {
+                document.getElementById(`deletemuzzytrack-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const uuidmuzzy = data.data[r].uuid
+                    console.log("ptn de lutin", uuidmuzzy);
+                    /**/
+                    getData(`http://localhost:3000/deletemuzzy/${uuidmuzzy}`, "DELETE").then(data => {
+                        alert("Muzzy deleted succesfully, we will reload this page!.")
+                        location.reload();
+                    })
+                    async function getData(url, method) {
+                        let resp = await fetch(url, {
+                            method: method,
+                            headers: {
+                                'Content-Type': "application/json"
+                            },
+                        });
+                        return await resp.json();
+                    }
+                    /**/
+
                 })
             }
 
@@ -215,6 +242,7 @@ window.onload = function () {
             });
             return await resp.json();
         }
+
         refreshMymuzzysalbums();
     }
 
@@ -241,8 +269,10 @@ window.onload = function () {
                                        <div class="addedbby">
                                            <p id="inp5">added by:<br> ${data.data[r].username}</p>
                                            <p id="inp5">added date:<br> ${data.data[r].date}<br> ${data.data[r].time}</p>
+                                           
                                        </div>
                                    </div>
+                                   <p class="deletemuzzy" id="deletemuzzyalbum-${r}" href="">delete muzzy</p>
                                            `
 
             }
@@ -256,6 +286,31 @@ window.onload = function () {
                     event.preventDefault()
                     const albumID = data.data[r].idalbum
                     window.location.href = `./moreInfo.html?idalbum=${albumID}`;
+                })
+            }
+            console.log("freroooo", data.data.length);
+            //delete a muzzy album
+            for (let r = data.data.length - 1; r >= 0; r--) {
+                document.getElementById(`deletemuzzyalbum-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const uuidmuzzy = data.data[r].uuid
+                    console.log("ptn de lutin", uuidmuzzy);
+                    /**/
+                    getData(`http://localhost:3000/deletemuzzyalbum/${uuidmuzzy}`, "DELETE").then(data => {
+                        alert("Muzzy deleted succesfully, we will reload this page!.")
+                        location.reload();
+                    })
+                    async function getData(url, method) {
+                        let resp = await fetch(url, {
+                            method: method,
+                            headers: {
+                                'Content-Type': "application/json"
+                            },
+                        });
+                        return await resp.json();
+                    }
+                    /**/
+
                 })
             }
 
@@ -297,8 +352,10 @@ window.onload = function () {
                                        <div class="addedbby">
                                            <p id="inp5">added by:<br> ${data.data[r].username}</p>
                                            <p id="inp5">added date:<br> ${data.data[r].date}<br> ${data.data[r].time}</p>
+                                           
                                        </div>
                                    </div>
+                                   <p class="deletemuzzy" id="deletemuzzyartist-${r}" href="">delete muzzy</p>
                                            `
 
             }
@@ -312,6 +369,31 @@ window.onload = function () {
                     event.preventDefault()
                     const artistID = data.data[r].idartist
                     window.location.href = `./moreInfo.html?idartist=${artistID}`;
+                })
+            }
+            console.log("freroooo", data.data.length);
+            //delete a muzzy artist
+            for (let r = data.data.length - 1; r >= 0; r--) {
+                document.getElementById(`deletemuzzyartist-${r}`).addEventListener("click", (event) => {
+                    event.preventDefault()
+                    const uuidmuzzy = data.data[r].uuid
+                    console.log("ptn de lutin", uuidmuzzy);
+                    /**/
+                    getData(`http://localhost:3000/deletemuzzyartist/${uuidmuzzy}`, "DELETE").then(data => {
+                        alert("Muzzy deleted succesfully, we will reload this page!.")
+                        location.reload();
+                    })
+                    async function getData(url, method) {
+                        let resp = await fetch(url, {
+                            method: method,
+                            headers: {
+                                'Content-Type': "application/json"
+                            },
+                        });
+                        return await resp.json();
+                    }
+                    /**/
+
                 })
             }
 
