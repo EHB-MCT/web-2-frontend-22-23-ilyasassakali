@@ -5,12 +5,15 @@ window.onload = function () {
     showUserData()
 
 
-    async function showUserData() { 
+    async function showUserData() {
         let user = JSON.parse(sessionStorage.getItem('user'))
         let uuiduser = user.uuid
 
+
+
+
         await getData(`http://localhost:3000/${uuiduser}`, "GET", user).then(data => {
-       
+
 
 
             let htmlString = ""
@@ -26,7 +29,7 @@ window.onload = function () {
             htmlString += `<div class="profiletext">
             <h4 class="datachange">Username: ${username}</h4>
             <h4 class="datachange">Email: ${email}</h4>
-            <h4 class="datachange">Password: ${password}</h4>
+            <h4 class="datachange">Password: ********</h4>
             </div>
 
            
@@ -34,7 +37,7 @@ window.onload = function () {
             <h4 class="datachange">Edit Here:</h4>
             <input type="text" class="InputForm" id="InputForm" name="username" placeholder="New Username" value="${username}">
             <input type="email" class="InputForm" id="InputForm2" name="email" placeholder="New Email" value="${email}">
-            <input type="text" class="InputForm" id="InputForm3" name="password" placeholder="New Password" value="${password}">
+            <input type="password" class="InputForm" id="InputForm3" name="password" placeholder="New Password" value="${password}">
             <button type="submit" class="moreinfobtn3" id="submitEmailChange">CONFIRM CHANGES</button>
             </form>
 
@@ -73,11 +76,14 @@ window.onload = function () {
         document.getElementById("editform").addEventListener('submit', (sevent) => {
             sevent.preventDefault()
 
-         
+
             // sessionStorage.clear()
             let newusername = document.getElementById('InputForm').value
             let newemail = document.getElementById('InputForm2').value
             let newpassword = document.getElementById('InputForm3').value
+
+
+
 
 
             let user = JSON.parse(sessionStorage.getItem('user'))
@@ -93,7 +99,7 @@ window.onload = function () {
             if (newusername && newemail && newpassword) {
                 getData(`http://localhost:3000/${uuiduser}`, "PUT", user).then(data => {
                     alert("Profile changes were successfully updated ")
-                    
+
                     sessionStorage.setItem('user', JSON.stringify(updatedInfo))
                     location.reload();
                 })
@@ -122,7 +128,7 @@ window.onload = function () {
     function edditaccount() {
         document.getElementById('edit').addEventListener('click', function (event) {
             event.preventDefault()
-       
+
             document.getElementById("editform").style.display = "flex";
         })
     }
@@ -131,7 +137,7 @@ window.onload = function () {
     function confirmdeleteuser() {
         document.getElementById('deleteconfirm').addEventListener('click', function (event) {
             event.preventDefault()
-         
+
             let user = JSON.parse(sessionStorage.getItem('user'))
             let uuiduser = user.uuid
 
@@ -158,7 +164,7 @@ window.onload = function () {
     //shows confirm to delete account button
     function deleteaccount() {
         document.getElementById('delete').addEventListener('click', function (event) {
-         
+
             document.getElementById("deleteconfirm").style.display = "inline-block";
         })
     }
@@ -169,7 +175,7 @@ window.onload = function () {
         const deleteSessionStorage = document.getElementById('logout')
         deleteSessionStorage.addEventListener('click', function (event) {
                 event.preventDefault();
-               
+
                 //https://www.w3schools.com/jsref/met_storage_clear.asp
                 sessionStorage.clear()
                 window.location.href = "../index.html"

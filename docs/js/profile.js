@@ -3,18 +3,11 @@
 window.onload = function () {
 
     showUserData()
-
-
     async function showUserData() {
         let user = JSON.parse(sessionStorage.getItem('user'))
         let uuiduser = user.uuid
 
-
-
-
         await getData(`http://localhost:3000/${uuiduser}`, "GET", user).then(data => {
-
-
 
             let htmlString = ""
             let username = data.username
@@ -49,10 +42,7 @@ window.onload = function () {
             </div>
                                     `
 
-
             document.getElementById("showContainer").innerHTML = htmlString;
-
-
         })
         async function getData(url, method) {
             let resp = await fetch(url, {
@@ -76,16 +66,10 @@ window.onload = function () {
         document.getElementById("editform").addEventListener('submit', (sevent) => {
             sevent.preventDefault()
 
-
             // sessionStorage.clear()
             let newusername = document.getElementById('InputForm').value
             let newemail = document.getElementById('InputForm2').value
             let newpassword = document.getElementById('InputForm3').value
-
-
-
-
-
             let user = JSON.parse(sessionStorage.getItem('user'))
             let uuiduser = user.uuid
 
@@ -121,9 +105,6 @@ window.onload = function () {
 
         })
     }
-
-
-
     //shows confirm to eddit account form
     function edditaccount() {
         document.getElementById('edit').addEventListener('click', function (event) {
@@ -157,10 +138,7 @@ window.onload = function () {
                 return await resp.json();
             }
         })
-
     }
-
-
     //shows confirm to delete account button
     function deleteaccount() {
         document.getElementById('delete').addEventListener('click', function (event) {
@@ -180,9 +158,6 @@ window.onload = function () {
                 sessionStorage.clear()
                 window.location.href = "../index.html"
             }
-
         )
     }
-
-
 }
