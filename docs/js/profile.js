@@ -30,7 +30,7 @@ window.onload = function () {
             htmlString += `<div class="profiletext">
             <h4 class="datachange">Username: ${username}</h4>
             <h4 class="datachange">Email: ${email}</h4>
-            <h4 class="datachange">Password: ${password}</h4>
+            <h4 class="datachange">Password: ********</h4>
             </div>
 
            
@@ -38,7 +38,7 @@ window.onload = function () {
             <h4 class="datachange">Edit Here:</h4>
             <input type="text" class="InputForm" id="InputForm" name="username" placeholder="New Username" value="${username}">
             <input type="email" class="InputForm" id="InputForm2" name="email" placeholder="New Email" value="${email}">
-            <input type="text" class="InputForm" id="InputForm3" name="password" placeholder="New Password" value="${password}">
+            <input type="password" class="InputForm" id="InputForm3" name="password" placeholder="New Password" value="${password}">
             <button type="submit" class="moreinfobtn3" id="submitEmailChange">CONFIRM CHANGES</button>
             </form>
 
