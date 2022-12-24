@@ -10,15 +10,15 @@ window.onload = function () {
     //fetch todays biggest hits 
     function fetchBigHits() {
         DZ.api('/chart/0/tracks', function (response) {
-            ////console.log("fetch:", response.data);
+           
 
             response.data.forEach(item => {
-                ////console.log("here are your items: ", item);
+                
                 const coverImage = item.album.cover_medium
                 const title = item.title
                 const artist = item.artist.name
                 const id = item.id 
-                ////console.log("c ca", artist);
+                
 
                 let container = document.getElementById("showContainer");
                 let htmlString = "";
@@ -44,16 +44,16 @@ window.onload = function () {
     //fetch today big albums
     function fetchBigAlbums() {
         DZ.api('/chart/0/albums', function (response) {
-            //console.log("fetch:", response.data);
+            
 
             response.data.forEach(item => {
-                ////console.log("here are your item: ", item);
+               
 
                 const coverImage = item.cover_medium
                 const album = item.title
                 const artist = item.artist.name
                 const id = item.id
-                ////console.log("c ca", artist);
+               
 
                 let container = document.getElementById("showContainer2");
                 let htmlString = "";
@@ -78,15 +78,15 @@ window.onload = function () {
     //fetch today big artist
     function fetchBigArtists() {
         DZ.api('/chart/0/artists', function (response) {
-            ////console.log("fetch:", response.data);
+           
 
             response.data.forEach(item => {
-                ////console.log("here are your items: ", item);
+                
                 const artistImage = item.picture_medium
                 const artistName = item.name
                 const type = item.type
                 const id = item.id
-                ////console.log(type);
+               
 
                 let container = document.getElementById("showContainer3");
                 let htmlString = "";

@@ -12,9 +12,8 @@ window.onload = function () {
 
 
 
-        //console.log("tiens", uuiduser);
         await getData(`http://localhost:3000/${uuiduser}`, "GET", user).then(data => {
-            console.log("jvaisko:", data);
+
 
 
             let htmlString = ""
@@ -77,7 +76,7 @@ window.onload = function () {
         document.getElementById("editform").addEventListener('submit', (sevent) => {
             sevent.preventDefault()
 
-            console.log('ta confirmeeeeee');
+
             // sessionStorage.clear()
             let newusername = document.getElementById('InputForm').value
             let newemail = document.getElementById('InputForm2').value
@@ -85,7 +84,7 @@ window.onload = function () {
 
 
 
-            //console.log("new credentialls:", newusername, newemail, newpassword);
+
 
             let user = JSON.parse(sessionStorage.getItem('user'))
             let uuiduser = user.uuid
@@ -100,7 +99,7 @@ window.onload = function () {
             if (newusername && newemail && newpassword) {
                 getData(`http://localhost:3000/${uuiduser}`, "PUT", user).then(data => {
                     alert("Profile changes were successfully updated ")
-                    console.log("c koica;", updatedInfo);
+
                     sessionStorage.setItem('user', JSON.stringify(updatedInfo))
                     location.reload();
                 })
@@ -129,7 +128,7 @@ window.onload = function () {
     function edditaccount() {
         document.getElementById('edit').addEventListener('click', function (event) {
             event.preventDefault()
-            console.log('heres the edit form');
+
             document.getElementById("editform").style.display = "flex";
         })
     }
@@ -138,7 +137,7 @@ window.onload = function () {
     function confirmdeleteuser() {
         document.getElementById('deleteconfirm').addEventListener('click', function (event) {
             event.preventDefault()
-            console.log("delete succes");
+
             let user = JSON.parse(sessionStorage.getItem('user'))
             let uuiduser = user.uuid
 
@@ -165,7 +164,7 @@ window.onload = function () {
     //shows confirm to delete account button
     function deleteaccount() {
         document.getElementById('delete').addEventListener('click', function (event) {
-            console.log('are you sur too delete');
+
             document.getElementById("deleteconfirm").style.display = "inline-block";
         })
     }
@@ -176,7 +175,7 @@ window.onload = function () {
         const deleteSessionStorage = document.getElementById('logout')
         deleteSessionStorage.addEventListener('click', function (event) {
                 event.preventDefault();
-                console.log("click");
+
                 //https://www.w3schools.com/jsref/met_storage_clear.asp
                 sessionStorage.clear()
                 window.location.href = "../index.html"

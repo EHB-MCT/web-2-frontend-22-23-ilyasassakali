@@ -1,5 +1,5 @@
 window.onload = function () {
-    //console.log("okee");
+
 
     refreshmuzzytracks()
 
@@ -9,7 +9,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllMuzzys", "GET", muzzy).then(data => {
-            //console.log("premier data:", data);
+
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -61,7 +61,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllalbumMuzzys", "GET", muzzy).then(data => {
-            //console.log("conva dataalbum:", data);
+
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -84,7 +84,7 @@ window.onload = function () {
                                    `
             }
 
-            // console.log("ca c ton string:", htmlString);
+
             document.getElementById("muzzelement2").innerHTML = htmlString;
 
             //redirect you to about page of clicked muzzy
@@ -114,7 +114,7 @@ window.onload = function () {
 
         let muzzy = sessionStorage.getItem("muzzy");
         await getData("http://localhost:3000/AllartistMuzzys", "GET", muzzy).then(data => {
-            //console.log("conva :", data);
+
 
             let htmlString = ""
             for (let r = data.length - 1; r >= 0; r--) {
@@ -137,7 +137,7 @@ window.onload = function () {
                                    `
             }
 
-            //console.log("ca c ton string:", htmlString);
+
             document.getElementById("muzzelement3").innerHTML = htmlString;
 
             //redirect you to about page of clicked muzzy
@@ -167,7 +167,7 @@ window.onload = function () {
         let user = sessionStorage.getItem("user");
 
         await getData("http://localhost:3000/allmyMuzzys", "POST", user).then(data => {
-            console.log("jregards ca:", data.data);
+
 
             let htmlString = ""
             for (let r = data.data.length - 1; r >= 0; r--) {
@@ -204,13 +204,13 @@ window.onload = function () {
                 })
             }
 
-            console.log("freroooo", data.data.length);
+
             //delete a muzzy track
             for (let r = data.data.length - 1; r >= 0; r--) {
                 document.getElementById(`deletemuzzytrack-${r}`).addEventListener("click", (event) => {
                     event.preventDefault()
                     const uuidmuzzy = data.data[r].uuid
-                    console.log("ptn de lutin", uuidmuzzy);
+
                     /**/
                     getData(`http://localhost:3000/deletemuzzy/${uuidmuzzy}`, "DELETE").then(data => {
                         alert("Muzzy deleted succesfully, we will reload this page!.")
@@ -251,7 +251,7 @@ window.onload = function () {
         let user = sessionStorage.getItem("user");
 
         await getData("http://localhost:3000/allmyMuzzysalbum", "POST", user).then(data => {
-            console.log("conva datamymuzzy:", data.data);
+
 
             let htmlString = ""
             for (let r = data.data.length - 1; r >= 0; r--) {
@@ -279,7 +279,7 @@ window.onload = function () {
 
             document.getElementById("muzzelement5").innerHTML = htmlString;
 
-            console.log("freroooo", data.data.length);
+
             //redirect you to about page of clicked muzzy
             for (let r = data.data.length - 1; r >= 0; r--) {
                 document.getElementById(`muzzinner5-${r}`).addEventListener("click", (event) => {
@@ -288,13 +288,13 @@ window.onload = function () {
                     window.location.href = `./moreInfo.html?idalbum=${albumID}`;
                 })
             }
-            console.log("freroooo", data.data.length);
+
             //delete a muzzy album
             for (let r = data.data.length - 1; r >= 0; r--) {
                 document.getElementById(`deletemuzzyalbum-${r}`).addEventListener("click", (event) => {
                     event.preventDefault()
                     const uuidmuzzy = data.data[r].uuid
-                    console.log("ptn de lutin", uuidmuzzy);
+
                     /**/
                     getData(`http://localhost:3000/deletemuzzyalbum/${uuidmuzzy}`, "DELETE").then(data => {
                         alert("Muzzy deleted succesfully, we will reload this page!.")
@@ -334,7 +334,7 @@ window.onload = function () {
         let user = sessionStorage.getItem("user");
 
         await getData("http://localhost:3000/allmyMuzzysartist", "POST", user).then(data => {
-            console.log("conva datamymuzzy:", data.data);
+
 
             let htmlString = ""
             for (let r = data.data.length - 1; r >= 0; r--) {
@@ -362,7 +362,7 @@ window.onload = function () {
 
             document.getElementById("muzzelement6").innerHTML = htmlString;
 
-            console.log("freroooo", data.data.length);
+
             //redirect you to about page of clicked muzzy
             for (let r = data.data.length - 1; r >= 0; r--) {
                 document.getElementById(`muzzinner6-${r}`).addEventListener("click", (event) => {
@@ -371,13 +371,13 @@ window.onload = function () {
                     window.location.href = `./moreInfo.html?idartist=${artistID}`;
                 })
             }
-            console.log("freroooo", data.data.length);
+
             //delete a muzzy artist
             for (let r = data.data.length - 1; r >= 0; r--) {
                 document.getElementById(`deletemuzzyartist-${r}`).addEventListener("click", (event) => {
                     event.preventDefault()
                     const uuidmuzzy = data.data[r].uuid
-                    console.log("ptn de lutin", uuidmuzzy);
+
                     /**/
                     getData(`http://localhost:3000/deletemuzzyartist/${uuidmuzzy}`, "DELETE").then(data => {
                         alert("Muzzy deleted succesfully, we will reload this page!.")

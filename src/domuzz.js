@@ -16,7 +16,7 @@ window.onload = function () {
         if (trackID) {
             //fetch moreinfo about tracks
             DZ.api(`/track/${trackID}`, function (response) {
-                //console.log("fetch:", response);
+
 
                 let htmlString = "";
 
@@ -73,7 +73,7 @@ window.onload = function () {
                 const savebtn = document.getElementById('moreinfobtn')
                 savebtn.addEventListener('click', (event) => {
                     event.preventDefault();
-                    //console.log("ta cliquez");
+
 
                     //https://tecadmin.net/get-current-date-time-javascript/
                     let today = new Date();
@@ -94,7 +94,6 @@ window.onload = function () {
                     muzzy.time = time
                     muzzy.idtrack = trackID
 
-                    //console.log("kaka", muzzy.idtrack);
 
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
@@ -122,7 +121,7 @@ window.onload = function () {
         } else if (albumID) {
             //fetch moreinfo about albums
             DZ.api(`/album/${albumID}`, function (response) {
-                //console.log("fetch:", response);
+
 
                 let htmlString = "";
 
@@ -144,7 +143,7 @@ window.onload = function () {
                 }
                 const durationmin = `${padTo2Digits(minutes)}min ${padTo2Digits(seconds)}sec`;
 
-                //console.log(numberTracks);
+
 
                 htmlString += ` <div class="elementContainer">
                 <div >
@@ -180,7 +179,7 @@ window.onload = function () {
                 const savebtn = document.getElementById('moreinfobtn')
                 savebtn.addEventListener('click', (event) => {
                     event.preventDefault();
-                    console.log("ta cliquez");
+
 
                     //https://tecadmin.net/get-current-date-time-javascript/
                     let today = new Date();
@@ -199,7 +198,7 @@ window.onload = function () {
                     muzzy.time = time
                     muzzy.idalbum = albumID
 
-                    //console.log("go", muzzy.username);
+
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/savealbummuzzy", "POST", muzzy).then(data => {
@@ -228,7 +227,7 @@ window.onload = function () {
         } else if (artistID) {
             //fetch moreinfo about albums
             DZ.api(`/artist/${artistID}`, function (response) {
-                //console.log("fetch:", response);
+
 
                 let htmlString = "";
 
@@ -239,7 +238,7 @@ window.onload = function () {
                 const numberAlbums = response.nb_album
                 const radio = response.radio
 
-                //console.log(coverImage);
+
 
                 htmlString += ` <div class="elementContainer">
                 <div >
@@ -273,7 +272,7 @@ window.onload = function () {
                 const savebtn = document.getElementById('moreinfobtn')
                 savebtn.addEventListener('click', (event) => {
                     event.preventDefault();
-                    console.log("ta cliquez");
+
 
                     //https://tecadmin.net/get-current-date-time-javascript/
                     let today = new Date();
@@ -291,7 +290,7 @@ window.onload = function () {
                     muzzy.time = time
                     muzzy.idartist = artistID
 
-                    //console.log("go", muzzy.username);
+
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
                         getData("http://localhost:3000/saveartistmuzzy", "POST", muzzy).then(data => {
@@ -324,7 +323,7 @@ window.onload = function () {
             let user = sessionStorage.getItem("user");
 
             await getData("http://localhost:3000/savemyMuzzys", "POST", user).then(data => {
-                console.log("conva datamymuzzy:", data);
+
                 alert("Muzzy has been published successfully")
                 window.location.href = `./muzzy.html`
             })

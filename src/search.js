@@ -24,27 +24,26 @@ window.onload = function () {
 
             if (document.getElementById('tra').checked) {
                 //search track
-                //console.log("je cherche:", searchword);
 
-                //console.log("le premier");
+
+
                 DZ.api(`/search/track?q=${searchword}`, function (response) {
-                    //console.log("la longueur de ton fetch: ", response.total); 
+
                     //triggers other function for displaying the result
                     if (response.total == 0 || response.total == undefined) {
                         showNoResult(searchword);
                     } else {
                         showResult(searchword)
                     }
-                    //console.log("search on: ", searchword);
-                    //console.log("fetch:", response.data);
+
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
-                        //console.log("here are your items: ", item); 
+
                         const coverImage = item.album.cover_medium
                         const title = item.title
                         const artist = item.artist.name
                         const id = item.id
-                        //console.log("c ca", artist);
+
                         htmlString += ` <div id=${id} class="elementContainer">
                             <a href="" ><img src="${coverImage}" alt=""></a>
                             <p>${title}</p>
@@ -55,7 +54,7 @@ window.onload = function () {
                         //redirect you to about page 
                         const tracks = document.getElementsByClassName("elementContainer")
                         const trackArray = Array.from(tracks)
-                        console.log(trackArray);
+
                         trackArray.map(track => track.addEventListener("click", function (event) {
                             event.preventDefault()
                             const trackID = track.id
@@ -65,10 +64,10 @@ window.onload = function () {
                 })
             } else if (document.getElementById('alb').checked) {
                 //search album
-                //console.log("le deuxieme");
+
                 DZ.api(`/search/album?q=${searchword}`, function (response) {
 
-                    //console.log("fetch:", response.data);
+
                     //triggers other function for displaying the result
                     if (response.total == 0 || response.total == undefined) {
                         showNoResult(searchword);
@@ -77,12 +76,12 @@ window.onload = function () {
                     }
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
-                        //console.log("here are your items: ", item);
+
                         const coverImage = item.cover_medium
                         const title = item.title
                         const artist = item.artist.name
                         const id = item.id
-                        //console.log("c ca", artist);
+
                         htmlString += ` <div id=${id} class="elementContainer">
                  <a href=""> <img src="${coverImage}" alt=""></a>
                  <p>${title}</p>
@@ -93,21 +92,21 @@ window.onload = function () {
                         //redirect you to moreinfopage 
                         const albums = document.getElementsByClassName("elementContainer")
                         const albumArray = Array.from(albums)
-                        console.log(albumArray);
+
                         albumArray.map(album => album.addEventListener("click", function (event) {
                             event.preventDefault()
                             const albumID = album.id
-                            console.log(albumID);
+
                             window.location.href = `./moreInfo.html?idalbum=${albumID}`;
                         }))
                     });
                 })
             } else if (document.getElementById('art').checked) {
                 //search artist
-                //console.log("troisieme");
+
                 DZ.api(`/search/artist?q=${searchword}`, function (response) {
 
-                    //console.log("fetch:", response.data);
+
                     //triggers other function for displaying the result
                     if (response.total == 0 || response.total == undefined) {
                         showNoResult(searchword);
@@ -116,12 +115,12 @@ window.onload = function () {
                     }
                     let htmlString = "";
                     response.data.slice(0, 25).forEach(item => {
-                        //console.log("here are your items: ", item);
+
                         const coverImage = item.picture_medium
                         const title = item.name
                         const artist = item.nb_fan
                         const id = item.id
-                        //console.log("c ca", artist);
+
                         htmlString += ` <div id=${id} class="elementContainer">
                  <a href=""> <img src="${coverImage}" alt=""></a>
                  <p>${title}</p>
@@ -132,11 +131,11 @@ window.onload = function () {
                         //redirect you to moreinfopage 
                         const artists = document.getElementsByClassName("elementContainer")
                         const artistArray = Array.from(artists)
-                        console.log(artistArray);
+
                         artistArray.map(artist => artist.addEventListener("click", function (event) {
                             const artistID = artist.id
                             event.preventDefault()
-                            console.log(artistID);
+
                             window.location.href = `./moreInfo.html?idartist=${artistID}`;
                         }))
                     });
@@ -149,28 +148,28 @@ window.onload = function () {
     //triggered when no result found and displays no result found for chosen criterias
     function showNoResult(searchword) {
         if (document.getElementById('tra').checked) {
-            console.log("there is nothing for:", searchword);
+
             let htmlString = "";
             htmlString += `<h2 style="margin-left:1%" id="showresult">No Tracks found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
             let htmlString2 = "";
             document.getElementById("showContainer").innerHTML = htmlString2;
         } else if (document.getElementById('alb').checked) {
-            console.log("there is nothing for:", searchword);
+
             let htmlString = "";
             htmlString += `<h2 style="margin-left:1%"  id="showresult">No Albums found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
             let htmlString2 = "";
             document.getElementById("showContainer").innerHTML = htmlString2;
         } else if (document.getElementById('art').checked) {
-            console.log("there is nothing for:", searchword);
+
             let htmlString = "";
             htmlString += `<h2 style="margin-left:1%"  id="showresult">No Artists found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
             let htmlString2 = "";
             document.getElementById("showContainer").innerHTML = htmlString2;
         }
- 
+
     }
 
     //triggered when result found and displays result found for chosen criterias
@@ -180,12 +179,12 @@ window.onload = function () {
             htmlString += `<h2 style="margin-left:1%"  id="showresult">Tracks found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
         } else if (document.getElementById('alb').checked) {
-            console.log("there is nothing for:", searchword);
+
             let htmlString = "";
             htmlString += `<h2 style="margin-left:1%"  id="showresult">Albums found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;
         } else if (document.getElementById('art').checked) {
-            console.log("there is nothing for:", searchword);
+
             let htmlString = "";
             htmlString += `<h2 style="margin-left:1%"  id="showresult">Artists found for " ${searchword} "</h2>`
             document.getElementById("moreContainer").innerHTML = htmlString;

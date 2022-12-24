@@ -16,7 +16,7 @@ window.onload = function () {
         if (trackID) {
             //fetch moreinfo about tracks
             DZ.api(`/track/${trackID}`, function (response) {
-                //console.log("fetch:", response);
+
 
                 let htmlString = "";
 
@@ -75,12 +75,11 @@ window.onload = function () {
                 playPreview();
 
                 function playPreview() {
-                    //console.log("init");
-                    //console.log("c lartist", artist);
+
                     const playbtn = document.getElementById('moreinfobtn')
 
                     playbtn.addEventListener("click", () => {
-                        //console.log(preview);
+
                         let htmlString = "";
                         htmlString += `<div class="track">
                         <div class="pictrack">
@@ -105,16 +104,15 @@ window.onload = function () {
                 //show related titles of artist of the moment in top section
                 const id = response.artist.id
                 DZ.api(`/artist/${id}/top`, function (response) {
-                    //console.log("c ca khey", response.data);
 
 
                     response.data.slice(0, 5).forEach(item => {
-                        //console.log("here are your items: ", item);
+
                         const minicoverImage = item.album.cover_medium
                         const minititle = item.title
                         const miniartist = item.artist.name
                         const miniid = item.id
-                        //console.log(miniid);
+
                         const minialbum = item.album.title
                         const miniduration = item.duration
 
@@ -165,7 +163,7 @@ window.onload = function () {
                         const hitElement = document.getElementById(miniid)
                         hitElement.addEventListener("click", function (event) {
                             event.preventDefault()
-                            //console.log(miniid);
+
                             window.location.assign(`./moreInfo.html?idtrack=${miniid}`)
                         })
                     });
@@ -179,7 +177,7 @@ window.onload = function () {
         } else if (albumID) {
             //fetch moreinfo about albums
             DZ.api(`/album/${albumID}`, function (response) {
-                //console.log("fetch:", response);
+
 
                 let htmlString = "";
 
@@ -201,7 +199,7 @@ window.onload = function () {
                 }
                 const durationmin = `${padTo2Digits(minutes)}min ${padTo2Digits(seconds)}sec`;
 
-                //console.log(numberTracks);
+
 
                 htmlString += ` <div class="elementContainer">
                 <div >
@@ -270,8 +268,8 @@ window.onload = function () {
                     </div>
                     </div>`
 
-                    //console.log(miniid);
-                    /**/
+
+
                     let container = document.getElementById("topArtistadd");
 
                     let htmlString2 = "";
@@ -289,12 +287,12 @@ window.onload = function () {
 
                     document.getElementById("topArtist").innerHTML = htmlString2;
                     container.insertAdjacentHTML("beforeend", htmlString3);
-                    /**/
+
                     //redirect you to track about page  
                     const hitElement = document.getElementById(miniid)
                     hitElement.addEventListener("click", function (event) {
                         event.preventDefault()
-                        //console.log(miniid);
+
                         window.location.assign(`./moreInfo.html?idtrack=${miniid}`)
                     })
 
@@ -306,7 +304,7 @@ window.onload = function () {
         } else if (artistID) {
             //fetch moreinfo about albums
             DZ.api(`/artist/${artistID}`, function (response) {
-                console.log("fetch:", response);
+
 
                 let htmlString = "";
 
@@ -317,7 +315,7 @@ window.onload = function () {
                 const numberAlbums = response.nb_album
                 const radio = response.radio
 
-                //console.log(coverImage);
+
 
                 htmlString += ` <div class="elementContainer">
                 <div >
@@ -353,7 +351,7 @@ window.onload = function () {
                 //show related artists of chosen artist 
 
                 DZ.api(`/artist/${artistID}/related`, function (response) {
-                    //console.log("oue gaté: ", response.data);
+
 
                     response.data.slice(0, 18).forEach(item => {
                         const minicoverImage = item.picture_medium
@@ -376,7 +374,7 @@ window.onload = function () {
                         const artistElement = document.getElementById(miniid)
                         artistElement.addEventListener("click", function (event) {
                             event.preventDefault()
-                            //console.log(miniid);
+
                             window.location.assign(`./moreInfo.html?idartist=${miniid}`)
                         })
 
