@@ -98,7 +98,7 @@ window.onload = function () {
 
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
-                        getData("http://localhost:3000/savemuzzy", "POST", muzzy).then(data => {
+                        getData("https://web2backend.onrender.com/savemuzzy", "POST", muzzy).then(data => {
                             //alert(data.message)
                             postinmymuzzy()
                         })
@@ -202,7 +202,7 @@ window.onload = function () {
 
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
-                        getData("http://localhost:3000/savealbummuzzy", "POST", muzzy).then(data => {
+                        getData("https://web2backend.onrender.com/savealbummuzzy", "POST", muzzy).then(data => {
                             //alert(data.message)
                             postinmymuzzy()
 
@@ -294,7 +294,7 @@ window.onload = function () {
 
                     if ((muzzy.opinion && muzzy.score) && (muzzy.score <= 100 && muzzy.score >= 0)) {
                         //add  muzzy in db
-                        getData("http://localhost:3000/saveartistmuzzy", "POST", muzzy).then(data => {
+                        getData("https://web2backend.onrender.com/saveartistmuzzy", "POST", muzzy).then(data => {
                             //alert(data.message)
                             postinmymuzzy()
 
@@ -323,7 +323,7 @@ window.onload = function () {
 
             let user = sessionStorage.getItem("user");
 
-            await getData("http://localhost:3000/savemyMuzzys", "POST", user).then(data => {
+            await getData("https://web2backend.onrender.com/savemyMuzzys", "POST", user).then(data => {
 
                 alert("Muzzy has been published successfully")
                 window.location.href = `./muzzy.html`

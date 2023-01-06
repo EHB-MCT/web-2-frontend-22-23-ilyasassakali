@@ -11,7 +11,7 @@ document.getElementById('loginform').addEventListener("submit", event => {
 
     if (user.password == user.password2) {
         //register the user
-        getData("http://localhost:3000/register", "POST", user).then(data => {
+        getData("https://web2backend.onrender.com/register", "POST", user).then(data => {
             alert(data.message)
             if (user.username && user.email && user.password && user.password2) {
                 window.location.href = `../index.html`

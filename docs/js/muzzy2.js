@@ -8,7 +8,7 @@ window.onload = function () {
     async function refreshmuzzytracks() {
 
         let muzzy = sessionStorage.getItem("muzzy");
-        await getData("http://localhost:3000/AllMuzzys", "GET", muzzy).then(data => {
+        await getData("https://web2backend.onrender.com/AllMuzzys", "GET", muzzy).then(data => {
 
 
             let htmlString = ""
@@ -60,7 +60,7 @@ window.onload = function () {
     async function refreshmuzzyalbums() {
 
         let muzzy = sessionStorage.getItem("muzzy");
-        await getData("http://localhost:3000/AllalbumMuzzys", "GET", muzzy).then(data => {
+        await getData("https://web2backend.onrender.com/AllalbumMuzzys", "GET", muzzy).then(data => {
 
 
             let htmlString = ""
@@ -113,7 +113,7 @@ window.onload = function () {
     async function refreshmuzzyartists() {
 
         let muzzy = sessionStorage.getItem("muzzy");
-        await getData("http://localhost:3000/AllartistMuzzys", "GET", muzzy).then(data => {
+        await getData("https://web2backend.onrender.com/AllartistMuzzys", "GET", muzzy).then(data => {
 
 
             let htmlString = ""
@@ -166,7 +166,7 @@ window.onload = function () {
     async function refreshMymuzzystracks() {
         let user = sessionStorage.getItem("user");
 
-        await getData("http://localhost:3000/allmyMuzzys", "POST", user).then(data => {
+        await getData("https://web2backend.onrender.com/allmyMuzzys", "POST", user).then(data => {
 
 
             let htmlString = ""
@@ -212,7 +212,7 @@ window.onload = function () {
                     const uuidmuzzy = data.data[r].uuid
 
                     /**/
-                    getData(`http://localhost:3000/deletemuzzy/${uuidmuzzy}`, "DELETE").then(data => {
+                    getData(`https://web2backend.onrender.com/deletemuzzy/${uuidmuzzy}`, "DELETE").then(data => {
                         alert("Muzzy deleted succesfully, we will reload this page!.")
                         location.reload();
                     })
@@ -250,7 +250,7 @@ window.onload = function () {
     async function refreshMymuzzysalbums() {
         let user = sessionStorage.getItem("user");
 
-        await getData("http://localhost:3000/allmyMuzzysalbum", "POST", user).then(data => {
+        await getData("https://web2backend.onrender.com/allmyMuzzysalbum", "POST", user).then(data => {
 
 
             let htmlString = ""
@@ -296,7 +296,7 @@ window.onload = function () {
                     const uuidmuzzy = data.data[r].uuid
 
                     /**/
-                    getData(`http://localhost:3000/deletemuzzyalbum/${uuidmuzzy}`, "DELETE").then(data => {
+                    getData(`https://web2backend.onrender.com/deletemuzzyalbum/${uuidmuzzy}`, "DELETE").then(data => {
                         alert("Muzzy deleted succesfully, we will reload this page!.")
                         location.reload();
                     })
@@ -333,7 +333,7 @@ window.onload = function () {
     async function refreshMymuzzysartists() {
         let user = sessionStorage.getItem("user");
 
-        await getData("http://localhost:3000/allmyMuzzysartist", "POST", user).then(data => {
+        await getData("https://web2backend.onrender.com/allmyMuzzysartist", "POST", user).then(data => {
 
 
             let htmlString = ""
@@ -379,7 +379,7 @@ window.onload = function () {
                     const uuidmuzzy = data.data[r].uuid
 
                     /**/
-                    getData(`http://localhost:3000/deletemuzzyartist/${uuidmuzzy}`, "DELETE").then(data => {
+                    getData(`https://web2backend.onrender.com/deletemuzzyartist/${uuidmuzzy}`, "DELETE").then(data => {
                         alert("Muzzy deleted succesfully, we will reload this page!.")
                         location.reload();
                     })

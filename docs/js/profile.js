@@ -7,7 +7,7 @@ window.onload = function () {
         let user = JSON.parse(sessionStorage.getItem('user'))
         let uuiduser = user.uuid
 
-        await getData(`http://localhost:3000/${uuiduser}`, "GET", user).then(data => {
+        await getData(`https://web2backend.onrender.com/${uuiduser}`, "GET", user).then(data => {
 
             let htmlString = ""
             let username = data.username
@@ -81,7 +81,7 @@ window.onload = function () {
             }
 
             if (newusername && newemail && newpassword) {
-                getData(`http://localhost:3000/${uuiduser}`, "PUT", user).then(data => {
+                getData(`https://web2backend.onrender.com/${uuiduser}`, "PUT", user).then(data => {
                     alert("Profile changes were successfully updated ")
 
                     sessionStorage.setItem('user', JSON.stringify(updatedInfo))
@@ -122,7 +122,7 @@ window.onload = function () {
             let user = JSON.parse(sessionStorage.getItem('user'))
             let uuiduser = user.uuid
 
-            getData(`http://localhost:3000/${uuiduser}`, "DELETE", user).then(data => {
+            getData(`https://web2backend.onrender.com/${uuiduser}`, "DELETE", user).then(data => {
                 alert("Account deleted succesfully, you will be redirected to the sign in page.")
                 sessionStorage.clear()
                 window.location.href = "../index.html"
